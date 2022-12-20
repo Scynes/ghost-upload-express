@@ -24,6 +24,16 @@ const WEB_SERVER = EXPRESS();
 const LISTENING_PORT = process.env.LISTENING_PORT || 3001;
 
 /**
+ * The URI to the remote mongo database.
+ */
+const DATABASE_URI = process.env.DATABASE_URI;
+
+/**
+ * Holds the reference to the created database connection.
+ */
+let DATABASE = undefined;
+
+/**
  * Sets up the initial application.
  */
 const buildWebServer = () => {
@@ -36,6 +46,15 @@ const buildWebServer = () => {
     WEB_SERVER.use(EXPRESS.static('controllers'));
     // Sets the body parser.
     WEB_SERVER.use(EXPRESS.urlencoded( { extended: true } ));
+    // Attempts to connect to the mongo database.
+    MONGOOSE.connect(DATABASE_URI);
+    // Assignes the connection reference.
+    DATABASE = MONGOOSE.connection;
+    // Handles database on error events when connecting.
+    DATABASE.on('error', (error) => console.log(`An error has occured while connecting to MongoDB - ${error.message}...`));
+    // Handles database on connected events when connecting.
+    DATABASE.on('connected', () => console.log(`MongoDB successfully connected on ${DATABASE.host}:${DATABASE.port}...`));
+    
 
     WEB_SERVER.listen(LISTENING_PORT, () => {
         console.log(`Ghost application is now running on port: ${LISTENING_PORT}...`);
