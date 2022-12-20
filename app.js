@@ -21,7 +21,7 @@ const WEB_SERVER = EXPRESS();
 /**
  * The port number to listen for connections on.
  */
-const LISTENING_PORT = process.env.LISTENING_PORT || 3001;
+const LISTENING_PORT = process.env.PORT || 3001;
 
 /**
  * The URI to the remote mongo database.
