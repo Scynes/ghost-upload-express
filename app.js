@@ -63,3 +63,7 @@ const buildWebServer = () => {
 
 // Invoke the build method to start the application..
 buildWebServer();
+
+WEB_SERVER.get('/', (request, response) => {
+    response.send('Hello World!');
+})
