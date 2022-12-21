@@ -80,7 +80,7 @@ const bindViewEngines = () => {
 const bindRouters = () => {
 
     // Sets the image router path.
-    WEB_SERVER.use('./image', GAME_ROUTER);
+    WEB_SERVER.use('/image', GAME_ROUTER);
     // Sets the game router path.
     WEB_SERVER.use('/game', GAME_ROUTER);
 
@@ -171,3 +171,11 @@ WEB_SERVER.get('/', async (request, response) => {
         response.send(match);
     });*/
 });
+
+/**
+ * This route will display error handling pages based on the response code...
+ */
+WEB_SERVER.get('*', (request, response) => {
+
+    response.status(404).send('render error page here...');
+})

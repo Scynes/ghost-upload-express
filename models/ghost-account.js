@@ -23,7 +23,19 @@ const GHOST_ACC_SCHEMA = new Schema({
             type: String,
             required: true
         }
-    }
+    },
+    album: [
+        {
+            imageUID: {
+                type: String,
+                required: true
+            },
+            imageType: {
+                type: String,
+                required: true
+            }
+        }
+    ]
 }, { timestamps: true, collection: 'accounts'});
 
 // Exports the schema for use.
