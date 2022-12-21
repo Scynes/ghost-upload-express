@@ -14,6 +14,11 @@ const MONGOOSE = require('mongoose');
 const ENV = require('dotenv').config();
 
 /**
+ * Imports the account router module.
+ */
+const ACCOUNT_ROUTER = require('./controllers/account.js');
+
+/**
  * Imports the game router module.
  */
 const GAME_ROUTER = require('./controllers/game.js');
@@ -36,7 +41,7 @@ const SEED_DATA = require('./seed_data.js');
 /**
  * Import the hash utility methods.
  */
-const ENCRYPTION = require('./scripts/hashing.js')
+const ENCRYPTION = require('./scripts/hashing.js');
 
 /**
  * The web server express instance.
@@ -79,8 +84,10 @@ const bindViewEngines = () => {
  */
 const bindRouters = () => {
 
+    // Sets the account router path.
+    WEB_SERVER.use('/account', ACCOUNT_ROUTER);
     // Sets the image router path.
-    WEB_SERVER.use('/image', GAME_ROUTER);
+    WEB_SERVER.use('/image', IMAGE_ROUTER);
     // Sets the game router path.
     WEB_SERVER.use('/game', GAME_ROUTER);
 
