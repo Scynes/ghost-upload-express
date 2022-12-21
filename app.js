@@ -173,7 +173,7 @@ WEB_SERVER.get('/', async (request, response) => {
     
     /*GhostAccount.findOne( { username: 'test' }, async (error, account) => {
 
-        let match = await ENCRYPTION.matches(' test', account.loginCredentials.password);
+        let match = await ENCRYPTION.matches('test', account.loginCredentials.password);
 
         response.send(match);
     });*/
