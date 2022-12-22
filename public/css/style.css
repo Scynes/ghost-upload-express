@@ -1,5 +1,0 @@
-fieldset#login > input, fieldset#signup > input {
-    width: 100%;
-    margin: 10px 0;
-    box-sizing: border-box;
-}

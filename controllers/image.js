@@ -13,7 +13,7 @@ const IMAGE_ROUTER = EXPRESS.Router();
  */
 IMAGE_ROUTER.get('/', (request, response) => {
 
-    response.send('A response from the image router!')
+    response.render('index');
 })
 
 /**

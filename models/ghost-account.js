@@ -24,8 +24,7 @@ const GHOST_ACC_SCHEMA = new Schema({
             required: true
         },
         session: {
-            type: String,
-            required: true
+            type: String
         }
     },
     album: [

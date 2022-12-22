@@ -194,5 +194,5 @@ WEB_SERVER.get('/', async (request, response) => {
  */
 WEB_SERVER.get('*', (request, response) => {
 
-    response.status(404).send('render error page here...');
+    response.status(404).render('404');
 })
