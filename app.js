@@ -186,7 +186,11 @@ WEB_SERVER.get('/seed', (request, response) => {
  */
 WEB_SERVER.get('/', async (request, response) => {
 
-    response.render('404')
+    response.render('error', {
+
+        errorCode: 503,
+        errorMessage: 'Under Construction! <(o.O<)'
+    })
 });
 
 /**
@@ -194,5 +198,9 @@ WEB_SERVER.get('/', async (request, response) => {
  */
 WEB_SERVER.get('*', (request, response) => {
 
-    response.status(404).render('404');
+    response.render('error', {
+
+        errorCode: response.statusCode,
+        errorMessage: 'Just a default error response...:p'
+    })
 })
