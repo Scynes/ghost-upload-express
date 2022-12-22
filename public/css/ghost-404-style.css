@@ -33,9 +33,9 @@ body {
   
   .not-found {
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: 50%;
-    font-size: 150px;
+    font-size: 300%;
     color: #565656;
     white-space: nowrap;
     transform: translate(-50%, 10%);

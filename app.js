@@ -186,7 +186,7 @@ WEB_SERVER.get('/seed', (request, response) => {
  */
 WEB_SERVER.get('/', async (request, response) => {
 
-    response.redirect('/image');
+    response.render('404')
 });
 
 /**

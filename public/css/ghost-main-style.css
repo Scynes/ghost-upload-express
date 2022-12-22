@@ -18,6 +18,7 @@ body {
 /* Header */
 div.logo-container {
     display: flex;
+    justify-content: center;
 }
 
 div.logo-container, #logo-mascot {
