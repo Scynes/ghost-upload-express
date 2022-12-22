@@ -4,9 +4,19 @@
 const EXPRESS = require('express');
 
 /**
+ * Express-session module import.
+ */
+const EXPRESS_SESSION = require('express-session');
+
+/**
  * Mongoose database module import.
  */
 const MONGOOSE = require('mongoose');
+
+/**
+ * Modules for holding session data in mongoDB.
+ */
+const MongoStore = require('connect-mongo');
 
 /**
  * Configures application system variables.
@@ -37,11 +47,6 @@ const GhostAccount = require('./models/ghost-account.js');
  * Imports mock database data.
  */
 const SEED_DATA = require('./seed_data.js');
-
-/**
- * Import the hash utility methods.
- */
-const ENCRYPTION = require('./scripts/hashing.js');
 
 /**
  * The web server express instance.
@@ -105,6 +110,18 @@ const bindMiddleware = () => {
     WEB_SERVER.use(EXPRESS.static('controllers'));
     // Sets the body parser.
     WEB_SERVER.use(EXPRESS.urlencoded( { extended: true } ));
+    // Sets the express session variables.
+    WEB_SERVER.use(EXPRESS_SESSION( 
+        { 
+            store: MongoStore.create( { mongoUrl: DATABASE_URI } ),
+            secret: process.env.SECRET, 
+            resave: false, 
+            saveUninitialized: false,
+            cookie: {
+                maxAge: (1000 * 60 * 60 * 24 * 7 * 2)
+            }
+        })
+    );
 
     console.log(`${APP_NAME} - successfully bound the middleware...`);
 }
@@ -170,13 +187,6 @@ WEB_SERVER.get('/seed', (request, response) => {
 WEB_SERVER.get('/', async (request, response) => {
 
     response.redirect('/image');
-    
-    /*GhostAccount.findOne( { username: 'test' }, async (error, account) => {
-
-        let match = await ENCRYPTION.matches('test', account.loginCredentials.password);
-
-        response.send(match);
-    });*/
 });
 
 /**

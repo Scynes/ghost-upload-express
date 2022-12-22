@@ -23,7 +23,7 @@ const ENCRYPTION = require('../scripts/hashing.js');
  */
 ACCOUNT_ROUTER.get('/', (request, response) => {
     //TODO: Add a session check if not logged in, reroute to signup...
-    response.redirect('/account/signup');
+    response.redirect('/account/login');
 });
 
 /**
@@ -59,7 +59,7 @@ ACCOUNT_ROUTER.post('/signup', (request, response) => {
 });
 
 /**
- * handles login requests by checking if the account exists and if
+ * Handles login requests by checking if the account exists and if
  * the password submitted matches the account password (hashed)
  */
 ACCOUNT_ROUTER.post('/login', (request, response) => {
@@ -68,9 +68,18 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
 
         if (!account) return response.send('No account was found.');
         
-        const passwordMatches = await ENCRYPTION.matches(request.body.password, account.loginCredentials.password);
+        await ENCRYPTION.matches(request.body.password, account.loginCredentials.password).then( match => {
 
-        return response.send(passwordMatches ? `Account has succesfully logged in! ${account}` : 'The password was not correct')
+            if (!match) return response.send('The password was not correct!');
+
+            request.session.isLoggedIn = true;
+            request.session.account = {
+                accountName: account.loginCredentials.username,
+                uid: account._id
+            }
+
+            return response.send(account)
+        });
     });
 });
 
@@ -78,8 +87,13 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
  * The router that handles account login requests.
  */
 ACCOUNT_ROUTER.get('/login', (request, response) => {
+    
+    if (request.session.isLoggedIn) {
 
-    response.render('login');
+        response.send('You are already logged in!!!!!');
+    } else {
+        response.render('login');
+    }
 });
 
 /**

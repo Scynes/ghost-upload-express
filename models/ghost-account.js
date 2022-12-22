@@ -22,6 +22,10 @@ const GHOST_ACC_SCHEMA = new Schema({
         password: {
             type: String,
             required: true
+        },
+        session: {
+            type: String,
+            required: true
         }
     },
     album: [
