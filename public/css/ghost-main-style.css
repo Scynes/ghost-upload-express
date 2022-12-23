@@ -22,7 +22,7 @@ body {
     margin: auto;
     width: 100vw;
     background-color: var(--phantom-purple);
-    color: var(--ghost-white)
+    color: var(--ghost-white);
 }
 
 header {
@@ -220,10 +220,11 @@ a:hover {
 #account-side-menu {
     position: absolute;
     right: 0;
-    width: 300px;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgb(138, 43, 226, .5);
-    transform: translateX(100%);
+    transform-origin: 0% 0%;
+    transform: translate(100%, 0);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
@@ -270,7 +271,7 @@ fieldset#login > input, fieldset#signup > input {
         font-size: 4rem;
     }
 
-    #side-menu {
+    #side-menu, #account-side-menu {
         width: 300px;
     }
 
