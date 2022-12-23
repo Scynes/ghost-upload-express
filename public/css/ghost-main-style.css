@@ -45,18 +45,49 @@ span.text-jump:hover {
     color: var(--ectoplasm-green);
 }
 
+div#account-menu-container {
+    top: 0;
+    right: 0;
+}
+
 div#menu-container {
-    position: absolute;
     inset: 0;
+}
+
+div#menu-container, div#account-menu-container {
+    position: absolute;
+    height: 100%;
     width: 25%;
 }
 
-svg {
+span#logo-mascot {
+    padding-bottom: 0;
+}
+
+div.logo-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+div#account-menu-container, div#menu-container, div.logo-container, #logo-mascot {
+    padding: 10px;
+}
+
+div#avatar, svg {
     position: absolute;
-    left: 0;
     width: 65px;
     height: 65px;
     cursor: pointer;
+}
+
+div#avatar {
+    right: 0;
+}
+
+svg {
+    left: 0;
 }
 
 .burger {
@@ -155,21 +186,6 @@ svg {
     transition: transform 400ms 250ms;
 }
 
-span#logo-mascot {
-    padding-bottom: 0;
-}
-
-div.logo-container {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-}
-
-div#menu-container, div.logo-container, #logo-mascot {
-    padding: 10px;
-}
-
 /* Side Menu */
 a {
 	text-decoration: none !important;
@@ -233,5 +249,11 @@ fieldset#login > input, fieldset#signup > input {
         height: 80px;
         width: 80px;
         margin-left: 20px;
+    }
+
+    div#avatar {
+        height: 80px;
+        width: 80px;
+        margin-right: 20px;
     }
 }
