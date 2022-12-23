@@ -79,7 +79,7 @@
   opacity: 25%;
   animation: scale 2s infinite;
   border-radius: 75%;
-  background-color: black;
+  background-color: rgb(116, 115, 115);
 }
 
 @keyframes float {

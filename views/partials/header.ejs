@@ -3,7 +3,7 @@
 
         <%- include('menu-hamburger') %> 
 
-        <h1 class="logo">GH</h1>
+        <h1 class="logo"><span class="text-jump">G</span><span class="text-jump">H</span></h1>
         <span id="logo-mascot">        
             <div id="ghost">
                 <div id="ghost-face" class="flex-container">
@@ -16,7 +16,15 @@
             </div>
             <div id="umbra"></div>
         </span>
-        <h1 class="logo">st uPlOad</h1> 
+        <h1 class="logo"><span class="text-jump">s</span><span class="text-jump">t</span>
+            <% 
+                const remainingInput = 'uPload';
+                
+                for (const char of remainingInput) {
+            %><span class="text-jump"><%=char%></span><%        
+                }
+            %> 
+        </h1> 
     </div>
 
 </header>

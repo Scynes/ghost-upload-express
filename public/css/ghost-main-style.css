@@ -34,16 +34,26 @@ h1.logo {
     margin: auto 0;
     font-family: var(--phantom-font);
     font-size: 1.60rem;
+}
 
+span.text-jump {
+    display: inline-block;
+    transition: transform .5s, color .5s;
+}
+span.text-jump:hover {
+    transform: translateY(-5px);
+    color: var(--ectoplasm-green);
 }
 
 div#menu-container {
     position: absolute;
     inset: 0;
+    width: 25%;
 }
 
 svg {
     position: absolute;
+    left: 0;
     width: 65px;
     height: 65px;
     cursor: pointer;
@@ -169,10 +179,6 @@ a {
 
 a:hover {
 	color: var(--ectoplasm-green-bright);
-}
-
-#side-menu-toggle {
-	width: 0%;
 }
 
 #side-menu-toggle input {
