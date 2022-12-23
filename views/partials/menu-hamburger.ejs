@@ -1,3 +1,9 @@
+<script defer>
+    const toggleActiveMenu = () => {
+        $('#side-menu-toggle > input').toggleClass('active');
+        $('#burger-menu').toggleClass('active');
+    };
+</script>
 <svg>
     <defs>
         <filter id="gooeyness">
@@ -8,7 +14,7 @@
     </defs>
 </svg>
 <div id="menu-container">
-    <div id="burger-menu" onclick="this.classList.toggle('active')">
+    <div id="burger-menu" onclick="toggleActiveMenu()">
         <svg class="burger" version="1.1" height="100" width="100" viewBox="0 0 100 100">
             <path class="line line1" d="M 50,65 H 70 C 70,65 75,65.198488 75,70.762712 C 75,73.779026 74.368822,78.389831 66.525424,78.389831 C 22.092231,78.389831 -18.644068,-30.508475 -18.644068,-30.508475" />
             <path class="line line2" d="M 50,35 H 70 C 70,35 81.355932,35.300135 81.355932,25.635593 C 81.355932,20.906215 78.841706,14.830508 72.881356,14.830508 C 35.648232,14.830508 -30.508475,84.322034 -30.508475,84.322034" />

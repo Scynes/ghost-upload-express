@@ -1,9 +1,15 @@
 /* Root Variables */
 :root {
     --phantom-purple: rgb(48, 37, 64);
+    --deep-phantom-purple: rgb(32, 25, 43);
     --ghost-white: rgb(248, 248, 255);
     --ectoplasm-green: rgb(0, 201, 167);
     --phantom-font: 'Lacquer', cursive;
+}
+
+/* Color schemes */
+div.logo-container, ul#side-menu {
+    background-color: var(--deep-phantom-purple);
 }
 
 /* Main Cross */
@@ -13,7 +19,6 @@
 
 body {
     margin: auto;
-    height: 100vh;
     width: 100vw;
     background-color: var(--phantom-purple);
     color: var(--ghost-white)
@@ -31,7 +36,6 @@ h1.logo {
 }
 
 div#menu-container {
-    display: flex;
     position: absolute;
     inset: 0;
 }
@@ -40,6 +44,7 @@ svg {
     position: absolute;
     height: 80px;
     width: 80px;
+    margin-left: 20px;
 }
 
 .burger {
@@ -150,25 +155,47 @@ div#menu-container, div.logo-container, #logo-mascot {
 }
 
 /* Side Menu */
-#side-menu {
-    position: absolute;
-    width: 100%;
-    inset: 0;
-}
-#list {
-    position: absolute;
-    width: 10%;
-    height: 20%;
-    margin: auto;
-    list-style-type: none;
-    transform-origin: 0% 0%;
-    transform: translate(100%, 0);
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+a {
+	text-decoration: none !important;
+	color: var(--ectoplasm-green);
+	transition: color 0.3s ease;
 }
 
-#list li {
-    padding: 10px;
-    font-size: 22px;
+a:hover {
+	color: #2ecc71;
+}
+
+#side-menu-toggle {
+	width: 0%;
+}
+
+#side-menu-toggle input {
+	display: none;
+	width: 0px;
+	height: 0px;
+}
+
+#side-menu {
+    margin: 0;
+	width: 300px;
+    height: 100vh;
+	padding: 50px;
+	background: #ededed;
+	list-style-type: none;
+	transform-origin: 0% 0%;
+	transform: translate(-100%, 0);
+
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#side-menu li {
+	padding: 10px 0;
+	font-size: 22px;
+}
+
+#side-menu-toggle .active~ul {
+	transform: scale(1.0, 1.0);
+	opacity: 1;
 }
 
 /* Input Fields */
