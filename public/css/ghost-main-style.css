@@ -75,19 +75,39 @@ div#account-menu-container, div#menu-container, div.logo-container, #logo-mascot
     padding: 10px;
 }
 
-div#avatar, svg {
+div#avatar-container, svg {
     position: absolute;
     width: 65px;
     height: 65px;
-    cursor: pointer;
+}
+
+div#avatar-container
+ {
+    display: flex;
+    right: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 div#avatar {
-    right: 0;
+    display: flex;
+    background-color: red;
+    height: 70%;
+    width: 70%;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+div#avatar img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
 }
 
 svg {
     left: 0;
+    cursor: pointer;
 }
 
 .burger {
@@ -251,7 +271,7 @@ fieldset#login > input, fieldset#signup > input {
         margin-left: 20px;
     }
 
-    div#avatar {
+    div#avatar-container {
         height: 80px;
         width: 80px;
         margin-right: 20px;
