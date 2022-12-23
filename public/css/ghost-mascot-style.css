@@ -20,8 +20,8 @@
 }
 
 #ghost {
-  width: 30px;
-  height: 35px;
+  width: 20px;
+  height: 20px;
   animation: float 2s infinite;
   border-radius: 15px 15px 0 0;
   background-color: var(--ectoplasm-green);
@@ -32,8 +32,8 @@
 }
 
 #ghost-face div {
-  width: 8px;
-  height: 7px;
+  width: 6px;
+  height: 5px;
   border-radius: 50%;
   background-color: black;
 }
@@ -73,9 +73,9 @@
 }
 
 #umbra {
-  width: 30px;
+  width: 20px;
   height: 15px;
-  margin: 25px 0 0 0;
+  margin: 15px 0 0 0;
   opacity: 25%;
   animation: scale 2s infinite;
   border-radius: 75%;
@@ -109,5 +109,22 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 460px) {
+
+  #ghost-face div {
+      height: 8px;
+      width: 7px;
+  }
+
+  #ghost {
+    height: 35px;
+    width: 30px;
+  }
+
+  #umbra {
+    width: 30px;
   }
 }

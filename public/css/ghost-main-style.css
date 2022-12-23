@@ -4,6 +4,7 @@
     --deep-phantom-purple: rgb(32, 25, 43);
     --ghost-white: rgb(248, 248, 255);
     --ectoplasm-green: rgb(0, 201, 167);
+    --ectoplasm-green-bright: rgb(46, 204, 113);
     --phantom-font: 'Lacquer', cursive;
 }
 
@@ -30,9 +31,10 @@ header {
 
 /* Header */
 h1.logo {
-    margin: 0;
+    margin: auto 0;
     font-family: var(--phantom-font);
-    font-size: 4rem;
+    font-size: 1.60rem;
+
 }
 
 div#menu-container {
@@ -42,9 +44,9 @@ div#menu-container {
 
 svg {
     position: absolute;
-    height: 80px;
-    width: 80px;
-    margin-left: 20px;
+    width: 65px;
+    height: 65px;
+    cursor: pointer;
 }
 
 .burger {
@@ -64,6 +66,10 @@ svg {
     stroke-linejoin: round;
     transform-origin: 50%;
     transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms, transform 500ms 200ms;
+}
+
+.burger:hover *, .x:hover * {
+    stroke: var(--ectoplasm-green-bright)
 }
 
 .x .line {
@@ -162,7 +168,7 @@ a {
 }
 
 a:hover {
-	color: #2ecc71;
+	color: var(--ectoplasm-green-bright);
 }
 
 #side-menu-toggle {
@@ -178,7 +184,7 @@ a:hover {
 #side-menu {
     position: absolute;
     margin: 0;
-	width: 300px;
+	width: 100vw;
     height: 100vh;
 	padding: 50px;
 	background: #ededed;
@@ -204,4 +210,22 @@ fieldset#login > input, fieldset#signup > input {
     width: 100%;
     margin: 10px 0;
     box-sizing: border-box;
+}
+
+@media (min-width: 460px) {
+
+    h1.logo {
+        margin: 0;
+        font-size: 4rem;
+    }
+
+    #side-menu {
+        width: 300px;
+    }
+
+    svg {
+        height: 80px;
+        width: 80px;
+        margin-left: 20px;
+    }
 }
