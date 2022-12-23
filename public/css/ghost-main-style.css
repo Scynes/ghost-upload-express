@@ -217,6 +217,12 @@ a:hover {
 	color: var(--ectoplasm-green-bright);
 }
 
+#account-side-menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 #side-menu-toggle input {
 	display: none;
 	width: 0px;
