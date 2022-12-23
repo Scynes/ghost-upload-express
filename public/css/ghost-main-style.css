@@ -219,8 +219,12 @@ a:hover {
 
 #account-side-menu {
     position: absolute;
-    bottom: 0;
     right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: rgb(138, 43, 226, .5);
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 #side-menu-toggle input {
@@ -239,7 +243,6 @@ a:hover {
 	list-style-type: none;
 	transform-origin: 0% 0%;
 	transform: translate(-100%, 0);
-
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
@@ -248,7 +251,7 @@ a:hover {
 	font-size: 22px;
 }
 
-#side-menu-toggle .active~ul {
+#side-menu-toggle .active~ul, #account-side-menu.active {
 	transform: scale(1.0, 1.0);
 	opacity: 1;
 }
