@@ -1,3 +1,5 @@
+@import './ghost-constants.css';
+
 /* Referenced from codepen, wave was custom */
 body {
   margin: 0;
@@ -52,7 +54,7 @@ transform: translate(-50%, -35%);
 .ghost__body {
   width: 210px;
   height: 200px;
-  background-color: white;
+  background-color: var(--ectoplasm-green);
   border-radius: 50% 50% 0 0;
 }
 
@@ -97,7 +99,7 @@ transform: translate(-50%, -35%);
   left: -40px;
   width: 90px;
   height: 25px;
-  background-color: white;
+  background-color: var(--ectoplasm-green);
   border-radius: 50% 0 0 50%/70% 0 0 70%;
   transform: rotate(-60deg);
   z-index: -10;
@@ -111,7 +113,7 @@ transform: translate(-50%, -35%);
   left: 160px;
   width: 90px;
   height: 25px;
-  background-color: white;
+  background-color: var(--ectoplasm-green);
   border-radius: 50% 0 0 50%/70% 0 0 70%;
   z-index: -10;
   transform: rotate(-120deg);
@@ -136,7 +138,7 @@ transform: translate(-50%, -35%);
   top: -88pt;
   width: 200%;
   height: 150px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--ectoplasm-green);
   clip-path: polygon(
     100% 0%, 0% 0%, 0% 100%, 
     2% 99.84%, 4% 99.38%, 6% 98.64%, 
