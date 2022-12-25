@@ -88,12 +88,13 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
  */
 ACCOUNT_ROUTER.get('/login', (request, response) => {
     
-    if (request.session.isLoggedIn) {
+    /*if (request.session.isLoggedIn) {
 
         response.send('You are already logged in!!!!!');
     } else {
         response.render('login');
-    }
+    }*/
+    response.render('login');
 });
 
 /**

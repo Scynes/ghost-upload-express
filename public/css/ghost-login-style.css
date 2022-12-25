@@ -1,1 +1,46 @@
 @import './ghost-constants.css';
+
+div#account-form-scene {
+    width: 100%;
+    height: 100%;
+    perspective: 600px;
+}
+
+div#account-form-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+div#account-form-card.card-flipped {
+    transform: rotateY(180deg);
+}
+
+div.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+div.card-login {
+    background-color: var(--ectoplasm-green);
+}
+
+div.card-signup {
+    background-color: var(--deep-phantom-purple);
+    transform: rotateY(180deg);
+}
+
+@media (min-width: 460px) {
+    
+    div#account-form-scene {
+        max-width: 600px;
+        max-height: 500px;
+        width: 100%;
+        height: 100%;
+        perspective: 600px;
+    }
+}
