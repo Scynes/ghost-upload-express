@@ -21,6 +21,10 @@ header {
     padding: 0;
 }
 
+footer {
+    height: 10%;
+}
+
 /* Header */
 h1.logo {
     margin: auto 0;
@@ -223,6 +227,7 @@ a:hover {
     transform-origin: 0% 0%;
     transform: translate(100%, 0);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    z-index: 1;
 }
 
 #side-menu-toggle input {
@@ -242,6 +247,7 @@ a:hover {
 	transform-origin: 0% 0%;
 	transform: translate(-100%, 0);
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    z-index: 2;
 }
 
 #side-menu li {
