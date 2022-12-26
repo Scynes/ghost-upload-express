@@ -60,31 +60,25 @@ div.ectoblob {
     z-index: -1;
 }
 
-fieldset {
-    width: 100%;
-    margin: 10px 0;
-    box-sizing: border-box;
-}
-
 .svg-blob {
     animation: move 60s ease-in-out infinite;
 }
 
 @keyframes move {
     0%   { 
-        transform: scale(1.4)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
+        transform: scale(1.4)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
     }
     25%  { 
-        transform: scale(1.2) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
+        transform: scale(1.2) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
     }
     50%  { 
-        transform: scale(1.6) translate(0, 0) rotate(180deg); fill: var(--ectoplasm-green); filter: drop-shadow( -16px -16px 16px var(--phantom-shadow)); 
+        transform: scale(1.6) translate(0, 0) rotate(180deg); fill: var(--ectoplasm-green-bright); filter: drop-shadow( -16px -16px 16px var(--phantom-shadow)); 
     }
     75%  { 
-        transform: scale(1.1) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
+        transform: scale(1.1) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
     }
     100% { 
-        transform: scale(1.4)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
+        transform: scale(1.4)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
     }
 }
 

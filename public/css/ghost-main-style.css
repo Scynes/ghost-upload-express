@@ -15,6 +15,9 @@ body {
     width: 100vw;
     background-color: var(--phantom-purple);
     color: var(--ghost-white);
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
@@ -262,8 +265,10 @@ a:hover {
 
 /* Input Fields */
 fieldset.account-form {
+    margin: 10px;
+    max-width: 350px;
     width: 100%;
-    background-color: var(--phantom-shadow);
+    background-color: var(--deep-phantom-purple-smoky);
     border-style: none;
     border-radius: 5px;
 }
@@ -273,6 +278,8 @@ fieldset#login > input, fieldset#signup > input {
     margin: 10px 0;
     height: 50px;
     box-sizing: border-box;
+    background-color: rgba(0, 201, 167, .9);
+    border-style: none;
 }
 
 @media (min-width: 460px) {

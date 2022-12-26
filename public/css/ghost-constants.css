@@ -1,6 +1,7 @@
 /* Root Variables */
 :root {
     --phantom-purple: rgb(48, 37, 64);
+    --deep-phantom-purple-smoky: rgba(32, 25, 43, 0.8);
     --deep-phantom-purple: rgb(32, 25, 43);
     --ghost-white: rgb(248, 248, 255);
     --ectoplasm-green: rgb(0, 201, 167);
