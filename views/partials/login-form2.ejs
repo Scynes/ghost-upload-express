@@ -5,18 +5,25 @@
     <div id="account-form-scene">
         <div id="account-form-card" onclick="$(this).toggleClass('card-flipped')">
             <div class="card-face card-login">
-                <div class="login-form">
-                    asdasdasdas
+                <div id="login-form-container">
+                    <form action="">
+                        <fieldset id="login" class="account-form">
+                            <legend>LOGIN!</legend>
+                            <input type="text" name="" id="" placeholder="Username">
+                            <input type="password" name="" id="" placeholder="Password">
+                            <input type="submit" value="Sign In">
+                        </fieldset>
+                    </form>
                 </div>
 
                 <%- include('animations/ectoblob') %> 
 
             </div>
             <div class="card-face card-signup">
-                <div class="signup-form">
+                <div id="signup-form-container">
                     sdxfgsdfgsdfg
                 </div>
-                
+
                 <%- include('animations/ectoblob') %> 
 
             </div>

@@ -261,9 +261,17 @@ a:hover {
 }
 
 /* Input Fields */
+fieldset.account-form {
+    width: 100%;
+    background-color: var(--phantom-shadow);
+    border-style: none;
+    border-radius: 5px;
+}
+
 fieldset#login > input, fieldset#signup > input {
     width: 100%;
     margin: 10px 0;
+    height: 50px;
     box-sizing: border-box;
 }
 
@@ -272,6 +280,10 @@ fieldset#login > input, fieldset#signup > input {
     h1.logo {
         margin: 0;
         font-size: 4rem;
+    }
+
+    fieldset.account-form {
+        max-width: 400px;
     }
 
     #side-menu, #account-side-menu {

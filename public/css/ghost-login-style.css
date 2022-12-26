@@ -39,6 +39,15 @@ div.card-login {
     background-color: var(--deep-phantom-purple);
 }
 
+div#login-form-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
 div.card-signup {
     background-color: var(--deep-phantom-purple);
     transform: rotateY(180deg);
@@ -51,10 +60,10 @@ div.ectoblob {
     z-index: -1;
 }
 
-div.login-form, div.signup-form {
-    position: absolute;
-    height: 100%;
+fieldset {
     width: 100%;
+    margin: 10px 0;
+    box-sizing: border-box;
 }
 
 .svg-blob {
@@ -63,24 +72,27 @@ div.login-form, div.signup-form {
 
 @keyframes move {
     0%   { 
-        transform: scale(1)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
+        transform: scale(1.4)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
     }
     25%  { 
         transform: scale(1.2) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
     }
     50%  { 
-        transform: scale(0.8) translate(0, 0) rotate(180deg); fill: var(--ectoplasm-green); filter: drop-shadow( -16px -16px 16px var(--phantom-shadow)); 
+        transform: scale(1.6) translate(0, 0) rotate(180deg); fill: var(--ectoplasm-green); filter: drop-shadow( -16px -16px 16px var(--phantom-shadow)); 
     }
     75%  { 
-        transform: scale(0.5) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
+        transform: scale(1.1) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
     }
     100% { 
-        transform: scale(1)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
+        transform: scale(1.4)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
     }
 }
-  
 
 @media (min-width: 460px) {
+
+    div.card-face {
+        border-radius: 20px;
+    }
     
     div#account-form-scene {
         max-width: 600px;
