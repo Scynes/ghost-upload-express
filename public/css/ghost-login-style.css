@@ -1,5 +1,13 @@
 @import './ghost-constants.css';
 
+div#account-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+}
+
 div#account-form-scene {
     width: 100%;
     height: 100%;
@@ -24,16 +32,53 @@ div.card-face {
     height: 100%;
     backface-visibility: hidden;
     z-index: 0;
+    overflow: hidden;
 }
 
 div.card-login {
-    background-color: var(--ectoplasm-green);
+    background-color: var(--deep-phantom-purple);
 }
 
 div.card-signup {
     background-color: var(--deep-phantom-purple);
     transform: rotateY(180deg);
 }
+
+div.ectoblob {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+div.login-form, div.signup-form {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.svg-blob {
+    animation: move 60s ease-in-out infinite;
+}
+
+@keyframes move {
+    0%   { 
+        transform: scale(1)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
+    }
+    25%  { 
+        transform: scale(1.2) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
+    }
+    50%  { 
+        transform: scale(0.8) translate(0, 0) rotate(180deg); fill: var(--ectoplasm-green); filter: drop-shadow( -16px -16px 16px var(--phantom-shadow)); 
+    }
+    75%  { 
+        transform: scale(0.5) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
+    }
+    100% { 
+        transform: scale(1)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
+    }
+}
+  
 
 @media (min-width: 460px) {
     

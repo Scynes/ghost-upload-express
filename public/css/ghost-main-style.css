@@ -22,7 +22,7 @@ header {
 }
 
 footer {
-    height: 10%;
+    height: 5%;
 }
 
 /* Header */
@@ -74,7 +74,7 @@ div#account-menu-container, div#menu-container, div.logo-container, #logo-mascot
     padding: 10px;
 }
 
-svg {
+.svg-menu {
     position: absolute;
     width: 65px;
     height: 65px;
@@ -105,7 +105,7 @@ div#avatar img {
     height: auto;
 }
 
-svg {
+.svg-menu {
     left: 0;
     cursor: pointer;
 }
@@ -278,7 +278,7 @@ fieldset#login > input, fieldset#signup > input {
         width: 330px;
     }
 
-    svg {
+    .svg-menu {
         height: 80px;
         width: 80px;
         margin-left: 20px;

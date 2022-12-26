@@ -5,5 +5,6 @@
     --ghost-white: rgb(248, 248, 255);
     --ectoplasm-green: rgb(0, 201, 167);
     --ectoplasm-green-bright: rgb(46, 204, 113);
+    --phantom-shadow: rgba(0, 0, 0, .7);
     --phantom-font: 'Lacquer', cursive;
 }
