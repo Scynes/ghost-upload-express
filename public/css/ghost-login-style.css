@@ -46,6 +46,8 @@ div#login-form-container {
     align-items: center;
     height: 100%;
     width: 100%;
+    z-index: 1;
+
 }
 
 div.card-signup {
@@ -54,13 +56,14 @@ div.card-signup {
 }
 
 div.ectoblob {
-    position: absolute;
     height: 100%;
     width: 100%;
-    z-index: -1;
 }
 
 .svg-blob {
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
     animation: move 60s ease-in-out infinite;
 }
 
@@ -75,10 +78,10 @@ div.ectoblob {
         transform: scale(1.6) translate(0, 0) rotate(180deg); fill: var(--ectoplasm-green-bright); filter: drop-shadow( -16px -16px 16px var(--phantom-shadow)); 
     }
     75%  { 
-        transform: scale(1.1) translate(0, 0) rotate(55deg); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
+        transform: scale(1.1) translate(0, 0) rotate(250deg); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 14px 14px 6px var(--phantom-shadow)); 
     }
     100% { 
-        transform: scale(1.4)   translate(0, 0) rotate(0); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
+        transform: scale(1.4)   translate(0, 0) rotate(360deg); fill: var(--ectoplasm-green-bright); filter: drop-shadow( 20px 14px 10px var(--phantom-shadow)); 
     }
 }
 
@@ -91,8 +94,5 @@ div.ectoblob {
     div#account-form-scene {
         max-width: 600px;
         max-height: 500px;
-        width: 100%;
-        height: 100%;
-        perspective: 600px;
     }
 }

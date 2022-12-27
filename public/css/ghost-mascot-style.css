@@ -14,7 +14,7 @@
 
 #ghost {
   width: 20px;
-  height: 20px;
+  height: 25px;
   animation: float 2s infinite;
   border-radius: 15px 15px 0 0;
   background-color: var(--ectoplasm-green);
@@ -32,14 +32,14 @@
 }
 
 .ghost-flow {
-  height: 70%;
+  height: 100%;
+  max-height: 17px;
   overflow: hidden;
 }
 
 .ghost-wave {
   content: " ";
   display: inline-block;
-  top: -88pt;
   width: 200%;
   height: 100%;
   background-color: var(--ectoplasm-green);
@@ -115,6 +115,10 @@
   #ghost {
     height: 35px;
     width: 30px;
+  }
+
+  .ghost-flow {
+    max-height: 24.5px;
   }
 
   #umbra {
