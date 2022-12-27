@@ -278,9 +278,41 @@ fieldset#login > input, fieldset#signup > input {
     margin: 10px 0;
     height: 50px;
     box-sizing: border-box;
-    background-color: rgba(0, 201, 167, .9);
-    border-style: none;
+    background-color: rgb(0, 0, 0, 0);
+    color: var(--ectoplasm-green);
+    border: none;
+    border-bottom: 3px solid;
+    outline: none;
+    border-color: var(--ghost-white);
+    text-align: center;
 }
+
+fieldset#login > input::placeholder, fieldset#signup > input::placeholder {
+    font-style: italic;
+    color: var(--ghost-white);
+}
+
+fieldset#login > input:not(:placeholder-shown), fieldset#signup > input:not(:placeholder-shown) {
+    font-style: italic;
+    color: var(--ectoplasm-green);
+    border-color: var(--ectoplasm-green);
+}
+
+fieldset#login > input[type="submit"], fieldset#signup > input[type="submit"] {
+    background-color: var(--ghost-white);
+    color: var(--deep-phantom-purple);
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+    border: none;
+    border-radius: 15px;
+}
+
+fieldset#login > input[type="submit"]:hover, fieldset#signup > input[type="submit"]:hover {
+    background-color: var(--ectoplasm-green);
+    color: var(--deep-phantom-purple);
+}
+
+
 
 @media (min-width: 460px) {
 
