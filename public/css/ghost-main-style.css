@@ -281,7 +281,7 @@ fieldset#login > input, fieldset#signup > input {
     background-color: rgb(0, 0, 0, 0);
     color: var(--ectoplasm-green);
     border: none;
-    border-radius: none;
+    border-radius: 0;
     border-bottom: 3px solid;
     border-color: var(--ghost-white);
     text-align: center;
