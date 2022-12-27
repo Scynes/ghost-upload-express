@@ -300,18 +300,18 @@ fieldset#login > input:not(:placeholder-shown), fieldset#signup > input:not(:pla
     border-color: var(--ectoplasm-green);
 }
 
-fieldset#login > input[type="submit"], fieldset#login > input[type="button"], fieldset#signup > input[type="submit"] {
+fieldset#login > input[type="submit"], fieldset#login > input[type="button"], fieldset#signup > input[type="submit"], fieldset#signup > input[type="button"] {
     background-color: var(--ghost-white);
     color: var(--deep-phantom-purple);
     cursor: pointer;
-    transition: 0.25s ease-in-out;
+    transition: 0.5s ease-in-out;
     border: none;
     border-radius: 15px;
     font-style: normal;
     font-weight: bold;
 }
 
-fieldset#login > input[type="submit"]:hover, fieldset#login > input[type="button"]:hover, fieldset#signup > input[type="submit"]:hover {
+fieldset#login > input[type="submit"]:hover, fieldset#login > input[type="button"]:hover, fieldset#signup > input[type="submit"]:hover, fieldset#signup > input[type="button"]:hover {
     background-color: var(--ectoplasm-green);
     color: var(--deep-phantom-purple);
 }
