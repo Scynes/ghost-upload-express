@@ -1,18 +1,25 @@
 <style>
     @import url('../../ghost-login-style.css');
 </style>
+<script defer>
+    
+    function flipCard() {
+        $('#account-form-card').toggleClass('card-flipped');
+    }
+
+</script>
 <div id="account-form-container">
     <div id="account-form-scene">
-        <div id="account-form-card" onclick="$(this).toggleClass('card-flipped')">
+        <div id="account-form-card">
             <div class="card-face card-login">
                 <div id="login-form-container">
                     <form action="">
                         <fieldset id="login" class="account-form">
-                            <legend>LOGIN!</legend>
                             <input type="text" name="" id="" placeholder="Username...">
                             <input type="password" name="" id="" placeholder="Password...">
                             <input type="submit" value="Sign In">
-                            test
+                            <p>or</p>
+                            <input type="button" value="Join Ghost Family" onclick="flipCard()">
                         </fieldset>
                     </form>
                 </div>
@@ -21,8 +28,8 @@
 
             </div>
             <div class="card-face card-signup">
-                <div id="signup-form-container">
-                    sdxfgsdfgsdfg
+                <div id="signup-form-container" onclick="flipCard()">
+                    sdfgsdfg
                 </div>
 
                 <%- include('animations/ectoblob') %> 

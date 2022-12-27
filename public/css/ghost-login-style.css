@@ -39,7 +39,7 @@ div.card-login {
     background-color: var(--deep-phantom-purple);
 }
 
-div#login-form-container {
+div#login-form-container, div#signup-form-container {
     position: absolute;
     display: flex;
     justify-content: center;

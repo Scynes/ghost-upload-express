@@ -285,6 +285,8 @@ fieldset#login > input, fieldset#signup > input {
     outline: none;
     border-color: var(--ghost-white);
     text-align: center;
+    font-size: 20px;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 fieldset#login > input::placeholder, fieldset#signup > input::placeholder {
@@ -298,21 +300,27 @@ fieldset#login > input:not(:placeholder-shown), fieldset#signup > input:not(:pla
     border-color: var(--ectoplasm-green);
 }
 
-fieldset#login > input[type="submit"], fieldset#signup > input[type="submit"] {
+fieldset#login > input[type="submit"], fieldset#login > input[type="button"], fieldset#signup > input[type="submit"] {
     background-color: var(--ghost-white);
     color: var(--deep-phantom-purple);
     cursor: pointer;
     transition: 0.25s ease-in-out;
     border: none;
     border-radius: 15px;
+    font-style: normal;
+    font-weight: bold;
 }
 
-fieldset#login > input[type="submit"]:hover, fieldset#signup > input[type="submit"]:hover {
+fieldset#login > input[type="submit"]:hover, fieldset#login > input[type="button"]:hover, fieldset#signup > input[type="submit"]:hover {
     background-color: var(--ectoplasm-green);
     color: var(--deep-phantom-purple);
 }
 
-
+fieldset#login > p, fieldset#signup > p {
+    margin: 0;
+    text-align: center;
+    font-style: italic;
+}
 
 @media (min-width: 460px) {
 
