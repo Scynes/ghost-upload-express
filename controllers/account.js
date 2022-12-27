@@ -96,7 +96,6 @@ ACCOUNT_ROUTER.get('/login', (request, response) => {
 
         response.render('login');
     }
-    response.render('login');
 });
 
 /**
