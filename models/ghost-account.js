@@ -38,7 +38,7 @@ const GHOST_ACC_SCHEMA = new Schema({
                 required: true
             }
         }
-    ]
+    ],
 }, { timestamps: true, collection: 'accounts'});
 
 // Exports the schema for use.

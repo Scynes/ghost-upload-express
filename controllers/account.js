@@ -84,18 +84,42 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
 });
 
 /**
- * The router that handles account login requests.
+ * The route that handles account login requests.
  */
 ACCOUNT_ROUTER.get('/login', (request, response) => {
     
     if (request.session.isLoggedIn) {
 
-        response.send('You are already logged in!!!!!');
+        response.redirect('/account/profile');
 
     } else {
 
         response.render('login');
     }
+});
+
+/**
+ * Handles logging a user out and destroying the session if it exists.
+ */
+ACCOUNT_ROUTER.get('/logout', (request, response) => {
+
+    if (!request.session.isLoggedIn) return response.redirect('/account/login');
+
+        
+    request.session.destroy();
+    response.clearCookie('connect.sid');
+    response.send('Logged out...');
+});
+
+/**
+ * The route that handles access to an accounts profile page.
+ */
+ACCOUNT_ROUTER.get('/profile', (request, response) => {
+
+    // If the account is not logged in send them to the login page
+    if (!request.session.isLoggedIn) return response.redirect('/account/login');
+
+    response.render('profile');
 });
 
 /**
