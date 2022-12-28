@@ -13,7 +13,10 @@ const IMAGE_ROUTER = EXPRESS.Router();
  */
 IMAGE_ROUTER.get('/', (request, response) => {
 
-    response.render('index');
+    response.render('index',    
+    {
+        avatar: request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
+    });
 })
 
 /**

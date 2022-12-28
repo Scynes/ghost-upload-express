@@ -31,7 +31,7 @@ ACCOUNT_ROUTER.get('/', (request, response) => {
  */
 ACCOUNT_ROUTER.get('/signup', (request, response) => {
 
-    response.render('signup');
+    response.redirect('/account/login');
 });
 
 /**
@@ -40,6 +40,7 @@ ACCOUNT_ROUTER.get('/signup', (request, response) => {
 ACCOUNT_ROUTER.post('/signup', (request, response) => {
 
     const makeAccount = {
+        avatar: 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/96be2232163929.567197ac6fb64.png',
         loginCredentials: {},
         album: []
     };
@@ -66,15 +67,24 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
 
     GhostAccount.findOne( { 'loginCredentials.username': request.body.username }, async (error, account) => {
 
-        if (!account) return response.send('No account was found.');
+        if (!account) return response.send(
+            {
+                error: 'No account was found.'
+            }
+        );
         
         await ENCRYPTION.matches(request.body.password, account.loginCredentials.password).then( match => {
 
-            if (!match) return response.send('The password was not correct!');
+            if (!match) return response.send(
+                {
+                    error: 'The password was not correct!'
+                }
+            );
 
             request.session.isLoggedIn = true;
             request.session.account = {
                 accountName: account.loginCredentials.username,
+                avatar: account.avatar,
                 uid: account._id
             }
 
@@ -87,15 +97,13 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
  * The route that handles account login requests.
  */
 ACCOUNT_ROUTER.get('/login', (request, response) => {
-    
-    if (request.session.isLoggedIn) {
 
-        response.redirect('/account/profile');
+    if (request.session.isLoggedIn) return response.redirect('/account/profile');
 
-    } else {
-
-        response.render('login');
-    }
+    response.render('login', 
+    {
+        avatar: 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
+    });
 });
 
 /**
@@ -118,8 +126,12 @@ ACCOUNT_ROUTER.get('/profile', (request, response) => {
 
     // If the account is not logged in send them to the login page
     if (!request.session.isLoggedIn) return response.redirect('/account/login');
+    console.log(request.session.accountAvatar);
 
-    response.render('profile');
+    response.render('profile',
+    {
+        avatar: request.session.account.avatar || 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
+    });
 });
 
 /**

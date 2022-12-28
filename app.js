@@ -191,7 +191,8 @@ WEB_SERVER.get('/', async (request, response) => {
     response.render('error', {
 
         errorCode: 503,
-        errorMessage: 'Under Construction! <(o.O<)'
+        errorMessage: 'Under Construction! <(o.O<)',
+        avatar: request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
     })
 });
 
@@ -203,6 +204,7 @@ WEB_SERVER.get('*', (request, response) => {
     response.render('error', {
 
         errorCode: response.statusCode,
-        errorMessage: 'Just a default error response...:p'
+        errorMessage: 'Just a default error response...:p',
+        avatar: request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
     })
 })

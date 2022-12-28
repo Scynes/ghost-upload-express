@@ -13,6 +13,10 @@ const Schema = MONGOOSE.Schema;
  */
 const GHOST_ACC_SCHEMA = new Schema({
 
+    avatar : {
+        type: String,
+        required: true
+    },
     loginCredentials: {
         
         username: {

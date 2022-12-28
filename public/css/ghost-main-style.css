@@ -287,12 +287,13 @@ fieldset#login > input, fieldset#signup > input {
     text-align: center;
     font-size: 20px;
     font-family: 'Montserrat Alternates', sans-serif;
+    outline: none;
 }
 
 fieldset#login > input::placeholder, fieldset#signup > input::placeholder {
     font-style: italic;
     color: var(--ghost-white);
-}
+} 
 
 fieldset#login > input:not(:placeholder-shown), fieldset#signup > input:not(:placeholder-shown) {
     font-style: italic;
