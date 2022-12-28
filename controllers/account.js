@@ -145,6 +145,23 @@ ACCOUNT_ROUTER.get('/profile', (request, response) => {
 });
 
 /**
+ * PATCH request route for generating a new API key for a user.
+ */
+ACCOUNT_ROUTER.patch('/profile/apikey', (request, response) => {
+
+    if (!request.session.isLoggedIn) return response.send( { error: 'You must be logged in to perform this action!' } );
+
+    GhostAccount.findByIdAndUpdate(request.session.account.uid, {
+        apiAccess: {
+            key: ENCRYPTION.generateAPIKey()
+        }
+    }, { new: true }, (error, account) => {
+
+        response.send({ apiKey: account.apiAccess.key });
+    })
+});
+
+/**
  * Exports the module as a usable router by our application.
  */
 module.exports = ACCOUNT_ROUTER;

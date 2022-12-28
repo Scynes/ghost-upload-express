@@ -17,6 +17,14 @@ const GHOST_ACC_SCHEMA = new Schema({
         type: String,
         required: true
     },
+    apiAccess: {
+        key: {
+            type: String,
+        },
+        expiration: {
+            type: String,
+        }
+    },
     loginCredentials: {
         
         username: {

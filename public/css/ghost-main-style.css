@@ -440,6 +440,16 @@ div.generate-api-key > input[type="text"] {
     width: 100%;
     border: none;
     text-align: center;
+    padding: 0 30px;
+    text-overflow: ellipsis;
+    color: var(--ectoplasm-green-bright);
+    background-color: var(--phantom-purple);
+    user-select: none;
+    cursor: pointer;
+}
+
+.api-p {
+    margin-top: 40px;
 }
 
 div.generate-api-key > input[type="text"]:focus {
@@ -463,6 +473,24 @@ div.generate > button {
 div.generate > button:hover {
     cursor: pointer;
     background-color: var(--ectoplasm-green);
+}
+
+div.copied {
+    border-radius: 5px;
+    opacity: 0;
+    font-weight: bold;
+    color: var(--deep-phantom-purple);
+    background-color: var(--ectoplasm-green);
+    transition: 2s ease-in-out;
+}
+
+div.copied.active {
+    opacity: 1;
+}
+
+div.copied > p {
+    margin: 0;
+    padding: 10px;
 }
 
 @media (max-width: 460px) {

@@ -1,5 +1,6 @@
 module.exports = [
     {
+
         avatar: 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/96be2232163929.567197ac6fb64.png',
         loginCredentials: {
             username: 'test',

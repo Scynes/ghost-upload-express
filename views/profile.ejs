@@ -3,6 +3,34 @@
 
     <%- include('partials/head') %> 
 
+    <script defer>
+        const generateAPIKey = () => {
+
+            $.ajax({
+                type: 'PATCH',
+                url: './profile/apikey',
+                data: {
+                    expire: false
+                },
+                success: (response) => {
+                    
+                    $('.generate-api-key input').val(response.apiKey);
+                }
+            })
+        };
+
+        const copyAPIKey = () => {
+
+            $('.generate-api-key input').select();
+            $('div.copied').toggleClass('active');
+            
+            setTimeout(() => {
+                $('div.copied').toggleClass('active');
+            }, 3000);
+
+            return document.execCommand('copy');
+        };
+    </script>
     <body>
 
         <%- include('partials/header') %>
@@ -25,12 +53,13 @@
                 <div id="api-settings">
                     <h4>API</h4>
                     <div class="api-container">
-                        <p>Current API Key</p>
+                        <p class="api-p">Current API Key</p>
                         <div class="generate-api-key">
-                            <div class="generate"><button>Generate Key</button></div>
-                            <input type="text">
+                            <div class="generate"><button onclick="generateAPIKey()">Generate Key</button></div>
+                            <input type="text" onclick="copyAPIKey()" readonly>
                         </div>
                         <p>Refer to the <a href="#">API Documentation </a>for usage.</p>
+                        <div class="copied"><p>API Key Copied!</p></div>
                     </div>
                 </div>
             </div>
