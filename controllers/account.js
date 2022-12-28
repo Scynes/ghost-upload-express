@@ -19,6 +19,11 @@ const GhostAccount = require('../models/ghost-account.js');
 const ENCRYPTION = require('../scripts/hashing.js');
 
 /**
+ * Imports the constant object for passing on page renders.
+ */
+const GHOST_RENDER_CONSTANTS = require('../models/ghost-render-contants.js');
+
+/**
  * The account index router.
  */
 ACCOUNT_ROUTER.get('/', (request, response) => {
@@ -100,10 +105,12 @@ ACCOUNT_ROUTER.get('/login', (request, response) => {
 
     if (request.session.isLoggedIn) return response.redirect('/account/profile');
 
-    response.render('login', 
-    {
-        avatar: 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
-    });
+    response.render('login', Object.assign(
+        {
+
+        },
+        GHOST_RENDER_CONSTANTS(request))
+    );
 });
 
 /**
@@ -128,10 +135,12 @@ ACCOUNT_ROUTER.get('/profile', (request, response) => {
     if (!request.session.isLoggedIn) return response.redirect('/account/login');
     console.log(request.session.accountAvatar);
 
-    response.render('profile',
-    {
-        avatar: request.session.account.avatar || 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
-    });
+    response.render('profile', Object.assign(
+        {
+
+        },
+        GHOST_RENDER_CONSTANTS(request))
+    );
 });
 
 /**

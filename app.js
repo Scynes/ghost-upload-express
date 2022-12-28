@@ -44,6 +44,11 @@ const IMAGE_ROUTER = require('./controllers/image.js')
 const GhostAccount = require('./models/ghost-account.js');
 
 /**
+ * Imports the constant object for passing on page renders.
+ */
+const GHOST_RENDER_CONSTANTS = require('./models/ghost-render-contants.js');
+
+/**
  * Imports mock database data.
  */
 const SEED_DATA = require('./seed_data.js');
@@ -188,12 +193,13 @@ WEB_SERVER.get('/seed', (request, response) => {
  */
 WEB_SERVER.get('/', async (request, response) => {
 
-    response.render('error', {
-
-        errorCode: 503,
-        errorMessage: 'Under Construction! <(o.O<)',
-        avatar: request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
-    })
+    response.render('error', Object.assign(
+        {
+            errorCode: 503,
+            errorMessage: 'Under Construction! <(o.O<)',
+        }, 
+        GHOST_RENDER_CONSTANTS(request))
+    );
 });
 
 /**
@@ -201,10 +207,11 @@ WEB_SERVER.get('/', async (request, response) => {
  */
 WEB_SERVER.get('*', (request, response) => {
 
-    response.render('error', {
-
-        errorCode: response.statusCode,
-        errorMessage: 'Just a default error response...:p',
-        avatar: request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
-    })
+    response.render('error', Object.assign(
+        {
+            errorCode: response.statusCode,
+            errorMessage: 'Just a default error response...:p',
+        },
+        GHOST_RENDER_CONSTANTS(request))
+    );
 })

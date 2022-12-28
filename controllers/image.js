@@ -14,6 +14,11 @@ const IMAGE_ROUTER = EXPRESS.Router();
 const MULTER = require('multer');
 
 /**
+ * Imports the constant object for passing on page renders.
+ */
+const GHOST_RENDER_CONSTANTS = require('../models/ghost-render-contants.js');
+
+/**
  * Constructs the storage engine for image uploads.
  */
 const STORAGE_ENGINE = MULTER.diskStorage({
@@ -33,11 +38,15 @@ const IMAGE_UPLOAD = MULTER({
     }
 });
 
+/**
+ * POST route for handling image uploading logic...
+ */
 IMAGE_ROUTER.post('/upload', IMAGE_UPLOAD.single('image'), (request, response) => {
 
     if (request.file) {
         response.send(request.file);
     }
+    console.log(request.file.originalname);
 });
 
 /**
@@ -45,10 +54,12 @@ IMAGE_ROUTER.post('/upload', IMAGE_UPLOAD.single('image'), (request, response) =
  */
 IMAGE_ROUTER.get('/', (request, response) => {
 
-    response.render('index',    
-    {
-        avatar: request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'
-    });
+    response.render('index', Object.assign(
+        {
+
+        },
+        GHOST_RENDER_CONSTANTS(request))
+    );
 })
 
 /**
