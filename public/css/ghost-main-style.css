@@ -491,6 +491,7 @@ div.copied.active {
 div.copied > p {
     margin: 0;
     padding: 10px;
+    user-select: none;
 }
 
 @media (max-width: 460px) {
