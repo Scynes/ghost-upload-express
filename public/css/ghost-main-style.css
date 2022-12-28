@@ -336,6 +336,7 @@ div > h4 {
     position: fixed;
     margin: 0;
     padding: 10px 0 10px 10px;
+    font-family: var(--phantom-font);
 }
 
 div > hr {
@@ -347,6 +348,7 @@ div#profile-flex {
     height: 90%;
     width: 100%;
 }
+
 div#account-settings {
     margin: auto;
     display: grid;
@@ -366,9 +368,10 @@ div#profile-settings, div#password-settings, div#api-settings {
     width: 100%;
     border-radius: 15px;
     background-color: var(--deep-phantom-purple-misty);
+    overflow: hidden;
 }
 
-div.change-pw-container {
+div.change-pw-container, div.api-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -424,6 +427,44 @@ div.change-pw-container > form {
     width: 100%;
 }
 
+div.generate-api-key {
+    display: flex;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 100%;
+    height: 40px;
+    max-width: 450px;
+}
+
+div.generate-api-key > input[type="text"] {
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+
+div.generate-api-key > input[type="text"]:focus {
+    outline: none;
+}
+
+div.generate-api-key > .generate{
+    width: 30%;
+}
+
+div.generate > button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-family: var(--phantom-font-flat);
+    color: var(--deep-phantom-purple);
+    background-color: var(--ghost-white-heavy);
+    transition: 0.5s ease-in-out;
+}
+
+div.generate > button:hover {
+    cursor: pointer;
+    background-color: var(--ectoplasm-green);
+}
+
 @media (max-width: 460px) {
 
     div#profile-settings {
@@ -472,5 +513,9 @@ div.change-pw-container > form {
 
     div.change-pw-container > form {
         width: 40%;
+    }
+
+    div.api-container {
+        flex-direction: column;
     }
 }

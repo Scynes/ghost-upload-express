@@ -103,6 +103,8 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
  */
 ACCOUNT_ROUTER.get('/login', (request, response) => {
 
+    console.log(ENCRYPTION.generateAPIKey());
+
     if (request.session.isLoggedIn) return response.redirect('/account/profile');
 
     response.render('login', Object.assign(
@@ -133,7 +135,6 @@ ACCOUNT_ROUTER.get('/profile', (request, response) => {
 
     // If the account is not logged in send them to the login page
     if (!request.session.isLoggedIn) return response.redirect('/account/login');
-    console.log(request.session.accountAvatar);
 
     response.render('profile', Object.assign(
         {

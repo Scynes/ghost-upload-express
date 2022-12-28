@@ -3,7 +3,22 @@
  */
 const HASHER = require('bcrypt');
 
+/**
+ * Import node native crypto library.
+ */
+const CRYPTO = require('crypto');
+
 module.exports = {
+
+    /**
+     * Returns a randomly generated API key.
+     */
+    generateAPIKey: () => {
+
+        const BUFFER = CRYPTO.randomBytes(32);
+
+        return BUFFER.toString('base64').replace('=', '');
+    },
 
     /**
      * Returns a hashed string using bcrypt of the input passed.
