@@ -9,6 +9,38 @@ const EXPRESS = require('express');
 const IMAGE_ROUTER = EXPRESS.Router();
 
 /**
+ * Multer module import.
+ */
+const MULTER = require('multer');
+
+/**
+ * Constructs the storage engine for image uploads.
+ */
+const STORAGE_ENGINE = MULTER.diskStorage({
+    destination: './public/images/',
+    filename: (request, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+
+/**
+ * Instantiate the storage engine with multer.
+ */
+const IMAGE_UPLOAD = MULTER({
+    storage: STORAGE_ENGINE,
+    limits: {
+        fileSize: 5000000
+    }
+});
+
+IMAGE_ROUTER.post('/upload', IMAGE_UPLOAD.single('image'), (request, response) => {
+
+    if (request.file) {
+        response.send(request.file);
+    }
+});
+
+/**
  * The image index router.
  */
 IMAGE_ROUTER.get('/', (request, response) => {
