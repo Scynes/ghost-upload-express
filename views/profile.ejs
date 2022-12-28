@@ -6,16 +6,25 @@
     <body>
 
         <%- include('partials/header') %>
-
-        <div id="account-settings">
-            <div id="profile-settings">
-                <p>Profile Stuff</p>
-            </div>
-            <div id="password-settings">
-                <p>Password Stuff</p>
-            </div>
-            <div id="api-settings">
-                <p>API stuff</p>
+        <div id="profile-flex">
+            <div id="account-settings">
+                <div id="profile-settings">
+                    <h4>Profile</h4>
+                </div>
+                <div id="password-settings">
+                    <h4>Password</h4>
+                    <div class="change-pw-container">
+                        <form action="#">
+                            <input type="password" placeholder="Old Password">
+                            <input type="password" placeholder="New Password">
+                            <input type="password" placeholder="Confirm New Password">
+                            <input type="submit" placeholder="Save">
+                        </form>
+                    </div>
+                </div>
+                <div id="api-settings">
+                    <h4>API</h4>
+                </div>
             </div>
         </div>
         

@@ -27,7 +27,6 @@ header {
 footer {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 5%;
 }
 
@@ -35,7 +34,6 @@ footer {
 footer > p {
     margin: 0;
     font-family: var(--phantom-font);
-    padding-bottom: 10px;
 }
 
 /* Header */
@@ -334,23 +332,68 @@ fieldset#login > p, fieldset#signup > p {
 }
 
 /* Profile */
+div > h4 {
+    position: fixed;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+}
+
+div > hr {
+    width: 100%;
+}
+
+div#profile-flex {
+    display: flex;
+    height: 90%;
+    width: 100%;
+}
 div#account-settings {
     margin: auto;
     display: grid;
+    grid-auto-rows: 1fr;
     grid-template-columns: 1fr;
-    align-items: center;
-    height: 85%;
     width: 100%;
+    height: 100%;
     max-width: 800px;
-    background-color: rgb(255, 0, 0, .2);
+    background-color: var(--deep-phantom-purple-misty);
+    overflow: hidden;
+}
+
+div#password-settings, div#api-settings {
+    border-top: 2px solid;
 }
 
 div#profile-settings, div#password-settings, div#api-settings {
     display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+div.change-pw-container {
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 100%;
+}
+
+div.change-pw-container > form > input {
+    box-sizing: border-box;
+    height: 40px;
+    width: 100%;
+    margin: 5px auto;
+}
+
+div.change-pw-container > form {
+    margin: 0 40px;
+    width: 100%;
+}
+
+@media (max-width: 460px) {
+
+    div#api-settings {
+        display: none;
+    }
 }
 
 @media (min-width: 460px) {
@@ -377,5 +420,18 @@ div#profile-settings, div#password-settings, div#api-settings {
     div#avatar-container {
         height: 100px;
         width: 100px;
+    }
+
+    div#profile-flex {
+        height: 85%;
+    }
+
+    div#account-settings {
+        height: 90%;
+        border-radius: 15px;
+    }
+
+    div.change-pw-container > form {
+        width: 40%;
     }
 }
