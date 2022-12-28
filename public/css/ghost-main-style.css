@@ -25,7 +25,17 @@ header {
 }
 
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 5%;
+}
+
+/* Footer */
+footer > p {
+    margin: 0;
+    font-family: var(--phantom-font);
+    padding-bottom: 10px;
 }
 
 /* Header */
