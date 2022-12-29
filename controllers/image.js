@@ -14,10 +14,24 @@ const IMAGE_ROUTER = EXPRESS.Router();
 const MULTER = require('multer');
 
 /**
+ * Import the node file system module for directory manipulation.
+ */
+const FILE_SYSTEM = require('fs');
+
+/**
  * Constructs the storage engine for image uploads.
  */
 const STORAGE_ENGINE = MULTER.diskStorage({
-    destination: './public/images/',
+
+    // Will store uploaded images at the given path, or create one if a user is logged in..
+    destination: (request, file, cb) => {
+        const DIR = './public/storage/images/' + (request.session.isLoggedIn ? request.session.account.uid : '');
+
+        if (FILE_SYSTEM.existsSync(DIR)) return cb(null, DIR);
+
+        return FILE_SYSTEM.mkdir(DIR, error => cb(error, DIR));
+    },
+
     filename: (request, file, cb) => {
         cb(null, file.originalname);
     }
@@ -37,11 +51,8 @@ const IMAGE_UPLOAD = MULTER({
  * POST route for handling image uploading logic...
  */
 IMAGE_ROUTER.post('/upload', IMAGE_UPLOAD.single('image'), (request, response) => {
-    console.log(request)
-    if (request.file) {
-        response.send(request.file);
-    }
-    console.log(request.file.originalname);
+
+    return request.file ? response.send(request.file) : response.send( { error: 'There was a problem uploading your avatar!' } );
 });
 
 /**
