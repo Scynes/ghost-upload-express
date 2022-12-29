@@ -71,7 +71,7 @@ const APP_NAME = process.env.APP_NAME || 'Ghostie';
 /**
  * Holds the reference to the created database connection.
  */
-let DATABASE = undefined;
+let database = undefined;
 
 /**
  * Custom middleware function for handling template injection if a user is authenticated.
@@ -159,12 +159,12 @@ const bindMongoDatabase = () => {
     // Attempts to connect to the mongo database.
     MONGOOSE.connect(DATABASE_URI);
     // Assignes the connection reference.
-    DATABASE = MONGOOSE.connection;
+    database = MONGOOSE.connection;
     // Handles database on error events when connecting.
-    DATABASE.on('error', (error) => console.log(`${APP_NAME} - an error has occured while connecting to MongoDB - ${error.message}...`));
+    database.on('error', (error) => console.log(`${APP_NAME} - an error has occured while connecting to MongoDB - ${error.message}...`));
     // Handles database on connected events when connecting.
-    DATABASE.on('connected', () => {
-        console.log(`${APP_NAME} - mongoDB successfully connected on ${DATABASE.host}:${DATABASE.port}...`)
+    database.on('connected', () => {
+        console.log(`${APP_NAME} - mongoDB successfully connected on ${database.host}:${database.port}...`)
 
         // Start listening when database is connected...
         WEB_SERVER.listen(LISTENING_PORT, () => {
