@@ -121,6 +121,8 @@ const bindMiddleware = () => {
 
     // Sets the public css folder static access.
     WEB_SERVER.use(EXPRESS.static('public/css'));
+    // Sets the public css folder static access.
+    WEB_SERVER.use(EXPRESS.static('public/images'));
     // Sets the scripts folder for static access.
     WEB_SERVER.use(EXPRESS.static('scripts'));
     // Sets the path for js controllers static access.
