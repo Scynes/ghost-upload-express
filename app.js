@@ -84,6 +84,7 @@ let DATABASE = undefined;
 const authenticated = (request, response, next) => {
 
     response.locals.avatar = request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg';
+    response.locals.displayName = request.session.isLoggedIn ? request.session.account.accountName : 'Ghostie Guest';
 
     return next();
 }

@@ -385,8 +385,7 @@ div.change-prof-container {
     height: 100%;
 }
 
-div.edit-avatar {
-    background-color: rgb(165, 42, 42, .3);
+div.edit-avatar, div.edit-display {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -416,13 +415,7 @@ div.upload-avatar {
 }
 
 .au-svg {
-    fill: var(--phantom-purple);
-}
-
-div.edit-display {
-    background-color: rgb(0, 255, 255,.3);
-    height: 100%;
-    width: 100%;
+    fill: var(--deep-phantom-purple);
 }
 
 div.change-pw-container > form > input {
