@@ -37,7 +37,7 @@ const IMAGE_UPLOAD = MULTER({
  * POST route for handling image uploading logic...
  */
 IMAGE_ROUTER.post('/upload', IMAGE_UPLOAD.single('image'), (request, response) => {
-
+    console.log(request)
     if (request.file) {
         response.send(request.file);
     }
