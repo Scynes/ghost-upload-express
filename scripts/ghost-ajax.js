@@ -16,11 +16,7 @@ const loginRequest = (form, url) => {
         },
         success: (response) => {
             
-            if (response.error) {
-                console.log(response.error);
-            } else {
-                console.log(response)
-            }
+            return response.error ? console.log(response.error) : window.location = response.redirect;
         }
     })
 };
@@ -44,11 +40,7 @@ const signupRequest = (form, url) => {
         },
         success: (response) => {
             
-            if (response.error) {
-                console.log(response.error);
-            } else {
-                console.log(response)
-            }
+            return response.error ? console.log(response.error) : window.location = response.redirect;
         }
     })
 }

@@ -14,7 +14,7 @@
                 },
                 success: (response) => {
                     
-                    $('.generate-api-key input').val(response.apiKey);
+                    return response.error ? console.log(response.error) : $('.generate-api-key input').val(response.apiKey);
                 }
             })
         };

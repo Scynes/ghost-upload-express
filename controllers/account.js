@@ -55,9 +55,16 @@ ACCOUNT_ROUTER.post('/signup', (request, response) => {
 
         GhostAccount.create(new GhostAccount(makeAccount), (error, account) => {
 
-            if (!error) return response.send(account);
+            if (error) return response.send( { error: 'There was a problem creating the account!' } );
 
-            response.send(error);
+            request.session.isLoggedIn = true;
+            request.session.account = {
+                accountName: account.loginCredentials.username,
+                avatar: account.avatar,
+                uid: account._id,
+                apiKey: account.apiAccess.key
+            }
+            response.send( { redirect: './profile' } );
         });
     });
 });
@@ -92,7 +99,7 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
                 apiKey: account.apiAccess.key
             }
 
-            return response.send(account)
+            return response.send( { redirect: './profile' } )
         });
     });
 });
@@ -101,8 +108,6 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
  * The route that handles account login requests.
  */
 ACCOUNT_ROUTER.get('/login', (request, response) => {
-
-    console.log(ENCRYPTION.generateAPIKey());
 
     if (request.session.isLoggedIn) return response.redirect('/account/profile');
 
@@ -116,7 +121,6 @@ ACCOUNT_ROUTER.get('/logout', (request, response) => {
 
     if (!request.session.isLoggedIn) return response.redirect('/account/login');
 
-        
     request.session.destroy();
     response.clearCookie('connect.sid');
     response.send('Logged out...');

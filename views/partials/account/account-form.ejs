@@ -8,6 +8,14 @@
         $('#account-form-card').toggleClass('card-flipped'); 
     }
 
+    // Custom validity check for password matching
+    const validate = () => {
+        let $password = $('#su-password');
+        let $confirmPassword = $('#su-passwordc');
+
+        return $confirmPassword.get(0).setCustomValidity($password.val() != $confirmPassword.val() ? 'Passwords Must Match!' : '');
+    };
+
 </script>
 <div id="account-form-container">
     <div id="account-form-scene">
@@ -25,7 +33,7 @@
                     </form>
                 </div>
 
-                <%- include('animations/ectoblob') %> 
+                <%- include('../animations/ectoblob') %> 
 
             </div>
             <div class="card-face card-signup">
@@ -33,8 +41,8 @@
                     <form onsubmit="signupRequest(event, './signup')" method="POST">
                         <fieldset id="signup" class="account-form">
                             <input type="text" name="username" placeholder="Username...">
-                            <input type="password" name="password" placeholder="Password...">
-                            <input type="password" name="passwordc" placeholder="Confirm Password...">
+                            <input type="password" name="password" id="su-password" onchange="validate()" placeholder="Password...">
+                            <input type="password" name="passwordc" id="su-passwordc" onkeyup="validate()" placeholder="Confirm Password...">
                             <input type="submit" value="Sign Up">
                             <p>Or</p>
                             <input type="button" value="Ghost Member" onclick="flipCard()">
@@ -42,7 +50,7 @@
                     </form>
                 </div>
 
-                <%- include('animations/ectoblob') %> 
+                <%- include('../animations/ectoblob') %> 
 
             </div>
         </div>
