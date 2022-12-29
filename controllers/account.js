@@ -41,6 +41,9 @@ ACCOUNT_ROUTER.post('/signup', (request, response) => {
 
     const makeAccount = {
         avatar: 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/96be2232163929.567197ac6fb64.png',
+        apiAccess: {
+            key: ENCRYPTION.generateAPIKey(),
+        },
         loginCredentials: {},
         album: []
     };
@@ -85,7 +88,8 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
             request.session.account = {
                 accountName: account.loginCredentials.username,
                 avatar: account.avatar,
-                uid: account._id
+                uid: account._id,
+                apiKey: account.apiAccess.key
             }
 
             return response.send(account)
@@ -142,6 +146,8 @@ ACCOUNT_ROUTER.patch('/profile/apikey', (request, response) => {
         }
     }, { new: true }, (error, account) => {
 
+        // Make sure to update the session store for the new key...
+        request.session.account.apiKey = account.apiAccess.key;
         response.send({ apiKey: account.apiAccess.key });
     })
 });

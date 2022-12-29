@@ -85,6 +85,7 @@ const authenticated = (request, response, next) => {
 
     response.locals.avatar = request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg';
     response.locals.displayName = request.session.isLoggedIn ? request.session.account.accountName : 'Ghostie Guest';
+    response.locals.apiKey = request.session.isLoggedIn ? request.session.account.apiKey : 'Error Rendering API Key...';
 
     return next();
 }
