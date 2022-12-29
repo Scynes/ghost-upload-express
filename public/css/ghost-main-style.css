@@ -413,6 +413,10 @@ div.upload-avatar {
     overflow: hidden;
 }
 
+div.upload-avatar > svg:hover {
+    cursor: pointer;
+}
+
 .au-svg {
     fill: var(--deep-phantom-purple);
 }
