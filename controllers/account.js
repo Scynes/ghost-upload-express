@@ -19,11 +19,6 @@ const GhostAccount = require('../models/ghost-account.js');
 const ENCRYPTION = require('../scripts/hashing.js');
 
 /**
- * Imports the constant object for passing on page renders.
- */
-const GHOST_RENDER_CONSTANTS = require('../models/ghost-render-contants.js');
-
-/**
  * The account index router.
  */
 ACCOUNT_ROUTER.get('/', (request, response) => {
@@ -107,12 +102,7 @@ ACCOUNT_ROUTER.get('/login', (request, response) => {
 
     if (request.session.isLoggedIn) return response.redirect('/account/profile');
 
-    response.render('login', Object.assign(
-        {
-
-        },
-        GHOST_RENDER_CONSTANTS(request))
-    );
+    response.render('login');
 });
 
 /**
@@ -136,12 +126,7 @@ ACCOUNT_ROUTER.get('/profile', (request, response) => {
     // If the account is not logged in send them to the login page
     if (!request.session.isLoggedIn) return response.redirect('/account/login');
 
-    response.render('profile', Object.assign(
-        {
-
-        },
-        GHOST_RENDER_CONSTANTS(request))
-    );
+    response.render('profile');
 });
 
 /**

@@ -44,11 +44,6 @@ const IMAGE_ROUTER = require('./controllers/image.js')
 const GhostAccount = require('./models/ghost-account.js');
 
 /**
- * Imports the constant object for passing on page renders.
- */
-const GHOST_RENDER_CONSTANTS = require('./models/ghost-render-contants.js');
-
-/**
  * Imports mock database data.
  */
 const SEED_DATA = require('./seed_data.js');
@@ -77,6 +72,21 @@ const APP_NAME = process.env.APP_NAME || 'Ghostie';
  * Holds the reference to the created database connection.
  */
 let DATABASE = undefined;
+
+/**
+ * Custom middleware function for handling template injection if a user is authenticated.
+ * 
+ * @param {*} request 
+ * @param {*} response 
+ * @param {*} next 
+ * @returns 
+ */
+const authenticated = (request, response, next) => {
+
+    response.locals.avatar = request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg';
+
+    return next();
+}
 
 /**
  * Binds the application view engines.
@@ -129,6 +139,8 @@ const bindMiddleware = () => {
             }
         })
     );
+    // Sets the authentication global var middleware.
+    WEB_SERVER.use(authenticated);
 
     console.log(`${APP_NAME} - successfully bound the middleware...`);
 }
@@ -193,13 +205,10 @@ WEB_SERVER.get('/seed', (request, response) => {
  */
 WEB_SERVER.get('/', async (request, response) => {
 
-    response.render('error', Object.assign(
-        {
-            errorCode: 503,
-            errorMessage: 'Under Construction! <(o.O<)',
-        }, 
-        GHOST_RENDER_CONSTANTS(request))
-    );
+    response.render('error', {
+        errorCode: 503,
+        errorMessage: 'Under Construction! <(o.O<)',
+    });
 });
 
 /**
@@ -207,11 +216,8 @@ WEB_SERVER.get('/', async (request, response) => {
  */
 WEB_SERVER.get('*', (request, response) => {
 
-    response.render('error', Object.assign(
-        {
-            errorCode: response.statusCode,
-            errorMessage: 'Just a default error response...:p',
-        },
-        GHOST_RENDER_CONSTANTS(request))
-    );
+    response.render('error', {
+        errorCode: response.statusCode,
+        errorMessage: 'Just a default error response...:p',
+    });
 })
