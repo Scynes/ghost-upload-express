@@ -7,6 +7,7 @@ const loginRequest = (form, url) => {
     form.preventDefault();
     const input = form.target;
 
+    console.log('wtf')
     $.ajax({
         type: 'POST',
         url: url,

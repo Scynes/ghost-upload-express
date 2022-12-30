@@ -1,7 +1,7 @@
 <style>
     @import url('../../ghost-login-style.css');
 </style>
-<script src="../../ghost-ajax.js"></script>
+<script src="../../../ghost-ajax.js"></script>
 <script defer>
     
     const flipCard = () => { 
@@ -22,7 +22,7 @@
         <div id="account-form-card">
             <div class="card-face card-login">
                 <div id="login-form-container">
-                    <form onsubmit="loginRequest(event, './login')" method="POST">
+                    <form onsubmit="loginRequest(event, './login')" method="">
                         <fieldset id="login" class="account-form">
                             <input type="text" name="username" placeholder="Username...">
                             <input type="password" name="password" placeholder="Password...">

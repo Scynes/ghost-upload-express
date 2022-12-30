@@ -16,7 +16,7 @@ const GhostAccount = require('../models/ghost-account.js');
 /**
  * Import the hash utility methods.
  */
-const ENCRYPTION = require('../scripts/hashing.js');
+const ENCRYPTION = require('../modules/hashing.js');
 
 /**
  * The account index router.
@@ -64,7 +64,7 @@ ACCOUNT_ROUTER.post('/signup', (request, response) => {
                 uid: account._id,
                 apiKey: account.apiAccess.key
             }
-            response.send( { redirect: './profile' } );
+            response.send( { redirect: request.originalUrl } );
         });
     });
 });
@@ -99,7 +99,7 @@ ACCOUNT_ROUTER.post('/login', (request, response) => {
                 apiKey: account.apiAccess.key
             }
 
-            return response.send( { redirect: './profile' } )
+            return response.send( { redirect: request.originalUrl } )
         });
     });
 });
