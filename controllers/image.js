@@ -14,9 +14,23 @@ const IMAGE_ROUTER = EXPRESS.Router();
 const MULTER = require('multer');
 
 /**
+ * Imports the express rate limit module.
+ */
+const ERL = require('express-rate-limit');
+
+/**
  * Import the node file system module for directory manipulation.
  */
 const FILE_SYSTEM = require('fs');
+
+/**
+ * Defines the ERL middleware configuration options.
+ */
+const LIMITER = ERL({
+    max: 1,
+    windowsMS: 20000,
+    message: 'You are sending too many requests! Try again shortly...'
+});
 
 /**
  * Constructs the storage engine for image uploads.
@@ -50,7 +64,7 @@ const IMAGE_UPLOAD = MULTER({
 /**
  * POST route for handling image uploading logic...
  */
-IMAGE_ROUTER.post('/upload', IMAGE_UPLOAD.single('image'), (request, response) => {
+IMAGE_ROUTER.post('/upload', [LIMITER, IMAGE_UPLOAD.single('image')], (request, response) => {
 
     return request.file ? response.send(request.file) : response.send( { error: 'There was a problem uploading your avatar!' } );
 });
