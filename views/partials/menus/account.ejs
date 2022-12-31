@@ -1,14 +1,22 @@
 <div id="account-side-menu">
+    <div class="account-sm-item-wrapper">
     <% 
     if (!isLoggedIn) {
     %> 
-        <div class="account-sm-item-wrapper">
-            <div class="join-or-login">
-                <h2>Welcome to Ghost Upload!</h2>
-                <button>Login or Join!</button>
-            </div>
+        <div class="join-or-login">
+            <h2>Welcome to Ghost Upload!</h2>
+            <button onclick="window.location='/account/'">Login or Join!</button>
+        </div>
+    <%
+    } else {
+    %>
+        <div class="logged-in-wrapper">
+            <h2>Logged in as <%= displayName %>!</h2>
+            <hr>
+            <button onclick="window.location='/account/logout'">Logout</button>
         </div>
     <%
     }
     %>
+    </div>
 </div>
