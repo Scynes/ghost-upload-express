@@ -2,4 +2,5 @@ node_modules
 
 .env
 
-/public/storage/images/
+public/storage/images/*
+!public/storage/images/default
