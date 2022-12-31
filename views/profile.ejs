@@ -40,12 +40,13 @@
             const IMAGE_DATA = new FormData();
             const IMAGE_FILE = $('#avatar-file').prop('files')[0];
 
+            $('#avatar-file').val('');
 
-            IMAGE_DATA.append('image', IMAGE_FILE);
+            IMAGE_DATA.append('avatar', IMAGE_FILE);
 
             $.ajax({
                 type: 'POST',
-                url: '/image/upload',
+                url: '/image/avatar',
                 data: IMAGE_DATA,
                 contentType: false,
                 processData: false,
@@ -53,7 +54,7 @@
 
                 success: (response) => {
 
-                    console.log(response);
+                    console.log($('.avatar-wrapper img').attr('src', `/avatar/${response.updatedAvatar}`));
                 }
             })
         }
@@ -69,13 +70,13 @@
                         <div class="edit-avatar">
                             <div class="avatar-wrapper">
                                 <div class="upload-avatar">
-                                    <input type="file" id="avatar-file" style="display: none;" onchange="changeAvatarRequest()">
+                                    <input type="file" id="avatar-file" style="display: none;" oninput="changeAvatarRequest()">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" onclick="openUpload()">
                                         <ellipse stroke="null" ry="175.6757" rx="150.54055" id="svg_8" cy="244.54053" cx="249.67572" fill="#00c9a7"/>
                                         <path fill="#0c0c0c" class="au-svg" d="m256,512c141.4,0 256,-114.6 256,-256s-114.6,-256 -256,-256s-256,114.6 -256,256s114.6,256 256,256zm129,-297c9.4,9.4 9.4,24.6 0,33.9s-24.6,9.4 -33.9,0l-71,-71l0,214.1c0,13.3 -10.7,24 -24,24s-24,-10.7 -24,-24l0,-214.1l-71,71c-9.4,9.4 -24.6,9.4 -33.9,0s-9.4,-24.6 0,-33.9l111.8,-112c9.4,-9.4 24.6,-9.4 33.9,0l112.1,112z"/>
                                     </svg>
                                 </div>
-                                <img src="<%= avatar %>">
+                                <img src="<%= avatar %>" onerror="this.src='https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg'">
                             </div>
                             <p>Profile Avatar</p>
                         </div>

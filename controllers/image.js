@@ -14,6 +14,11 @@ const IMAGE_ROUTER = EXPRESS.Router();
 const MULTER = require('multer');
 
 /**
+ * Imports the schema for ghost accounts.
+ */
+const GhostAccount = require('../models/ghost-account.js');
+
+/**
  * Imports the express rate limit module.
  */
 const ERL = require('express-rate-limit');
@@ -27,7 +32,7 @@ const FILE_SYSTEM = require('fs');
  * Defines the ERL middleware configuration options.
  */
 const LIMITER = ERL({
-    max: 1,
+    max: 5,
     windowsMS: 20000,
     message: 'You are sending too many requests! Try again shortly...'
 });
@@ -66,7 +71,22 @@ const IMAGE_UPLOAD = MULTER({
  */
 IMAGE_ROUTER.post('/upload', [LIMITER, IMAGE_UPLOAD.single('image')], (request, response) => {
 
-    return request.file ? response.send(request.file) : response.send( { error: 'There was a problem uploading your avatar!' } );
+    return request.file ? response.send(request.file) : response.send( { error: 'There was a problem uploading your image!' } );
+});
+
+/**
+ * POST route for handling avatar uploading logic...
+ */
+IMAGE_ROUTER.post('/avatar', [LIMITER, IMAGE_UPLOAD.single('avatar')], (request, response) => {
+
+    if (!request.file) return response.send( { error: 'There was a problem uploading your avatar!' } );
+
+    GhostAccount.findByIdAndUpdate(request.session.account.uid, { 'avatar' : request.file.filename }, { new: true }, (error, account) => {
+
+        if (error) return response.send(error);
+
+        response.send( { updatedAvatar: `${account._id}/${request.session.account.avatar = account.avatar} `} );
+    });
 });
 
 /**

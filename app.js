@@ -83,7 +83,7 @@ let database = undefined;
  */
 const authenticated = (request, response, next) => {
 
-    response.locals.avatar = request.session.isLoggedIn ? request.session.account.avatar : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg';
+    response.locals.avatar = request.session.isLoggedIn ? `/avatar/${request.session.account.uid}/${request.session.account.avatar}` : 'https://cdn.theatlantic.com/media/mt/science/cat_caviar.jpg';
     response.locals.displayName = request.session.isLoggedIn ? request.session.account.accountName : 'Ghostie Guest';
     response.locals.apiKey = request.session.isLoggedIn ? request.session.account.apiKey : 'Error Rendering API Key...';
 
@@ -124,7 +124,7 @@ const bindMiddleware = () => {
     // Sets the public css folder static access.
     WEB_SERVER.use(EXPRESS.static('public/css'));
     // Sets the public css folder static access.
-    WEB_SERVER.use(EXPRESS.static('public/images'));
+    WEB_SERVER.use('/avatar', EXPRESS.static('public/storage/images'));
     // Sets the public css folder static access.
     WEB_SERVER.use(EXPRESS.static('public/scripts'));
     // Sets the scripts folder for static access.

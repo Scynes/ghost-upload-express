@@ -402,6 +402,8 @@ div.avatar-wrapper {
 
 div.avatar-wrapper > img {
     width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 div.upload-avatar {
@@ -410,7 +412,6 @@ div.upload-avatar {
     right: 0;
     width: 20px;
     height: 20px;
-    overflow: hidden;
 }
 
 div.upload-avatar > svg:hover {
