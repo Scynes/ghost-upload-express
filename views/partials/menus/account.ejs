@@ -1,3 +1,14 @@
 <div id="account-side-menu">
-    Testing
+    <% 
+    if (!isLoggedIn) {
+    %> 
+        <div class="account-sm-item-wrapper">
+            <div class="join-or-login">
+                <h2>Welcome to Ghost Upload!</h2>
+                <button>Login or Join!</button>
+            </div>
+        </div>
+    <%
+    }
+    %>
 </div>

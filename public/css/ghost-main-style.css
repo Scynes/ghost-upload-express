@@ -79,6 +79,7 @@ div.logo-container {
     justify-content: center;
     position: relative;
     width: 100%;
+    z-index: 2;
 }
 
 div#account-menu-container, div#menu-container, div.logo-container, #logo-mascot {
@@ -228,16 +229,37 @@ a:hover {
 }
 
 #account-side-menu {
+    display: flex;
     position: fixed;
     margin: 0;
     right: 0;
     width: 100vw;
-    height: 100vh;
-    background-color: var(--ectoplasm-green);
-    transform-origin: 0% 0%;
-    transform: translate(100%, 0);
+    background-color: var(--deep-phantom-purple);
+    transform: translate(100%, -100%);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
     z-index: 1;
+}
+
+div.account-sm-item-wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+div.join-or-login > button {
+    width: 100%;
+    height: 40px;
+    margin: 15px auto;
+}
+
+div.join-or-login > h2 {
+    text-align: center;
+    color: var(--ectoplasm-green);
+    font-family: var(--phantom-font);
 }
 
 #side-menu-toggle input {
@@ -308,7 +330,7 @@ fieldset#login > input:not(:placeholder-shown), fieldset#signup > input:not(:pla
     border-color: var(--ectoplasm-green);
 }
 
-fieldset#login > input[type="submit"], fieldset#login > input[type="button"], fieldset#signup > input[type="submit"], fieldset#signup > input[type="button"] {
+fieldset#login > input[type="submit"], fieldset#login > input[type="button"], fieldset#signup > input[type="submit"], fieldset#signup > input[type="button"], div.join-or-login > button {
     background-color: var(--ghost-white);
     color: var(--deep-phantom-purple);
     cursor: pointer;
@@ -319,7 +341,7 @@ fieldset#login > input[type="submit"], fieldset#login > input[type="button"], fi
     font-weight: bold;
 }
 
-fieldset#login > input[type="submit"]:hover, fieldset#login > input[type="button"]:hover, fieldset#signup > input[type="submit"]:hover, fieldset#signup > input[type="button"]:hover {
+fieldset#login > input[type="submit"]:hover, fieldset#login > input[type="button"]:hover, fieldset#signup > input[type="submit"]:hover, fieldset#signup > input[type="button"]:hover, div.join-or-login > button:hover {
     background-color: var(--ectoplasm-green);
     color: var(--deep-phantom-purple);
 }
@@ -547,6 +569,10 @@ div.copied > p {
     div#api-settings {
         display: none;
     }
+
+    div.account-sm-item-wrapper {
+        padding-bottom: 95px;
+    }
 }
 
 @media (min-width: 460px) {
@@ -562,6 +588,10 @@ div.copied > p {
 
     #side-menu, #account-side-menu {
         width: 330px;
+    }
+
+    #account-side-menu {
+        border-bottom-left-radius: 15px;
     }
 
     .svg-menu {
