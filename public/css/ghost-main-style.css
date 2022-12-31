@@ -260,6 +260,14 @@ div.logged-in-wrapper, div.join-or-login {
     width: 100%;
 }
 
+div.logged-in-wrapper > ul {
+    list-style-type: none;
+}
+
+div.logged-in-wrapper > ul > li {
+    padding: 5px 0;
+}
+
 div.join-or-login > h2, div.logged-in-wrapper > h2 {
     text-align: center;
     color: var(--ectoplasm-green);
