@@ -126,6 +126,8 @@ const bindMiddleware = () => {
     WEB_SERVER.use(EXPRESS.static('public/css'));
     // Sets the public css folder static access.
     WEB_SERVER.use('/avatar', EXPRESS.static('public/storage/images'));
+    // Sets the public path for image uploads.
+    WEB_SERVER.use('/img', EXPRESS.static('public/storage/images'))
     // Sets the public access for images access.
     WEB_SERVER.use('/images', EXPRESS.static('public/images'));
     // Sets the public css folder static access.

@@ -35,6 +35,7 @@
                 cache: false,
                 success: (response) => {
                     console.log(response);
+                    $('img').attr('src', response.path);
                 }
             })
         }

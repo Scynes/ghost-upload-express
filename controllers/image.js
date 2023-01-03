@@ -70,8 +70,9 @@ const IMAGE_UPLOAD = MULTER({
  * POST route for handling image uploading logic...
  */
 IMAGE_ROUTER.post('/upload', [LIMITER, IMAGE_UPLOAD.single('image')], (request, response) => {
+    const BASE_PATH = request.session.isLoggedIn ? request.session.account.uid : 'anonymous';
 
-    return request.file ? response.send(request.file) : response.send( { error: 'There was a problem uploading your image!' } );
+    return request.file ? response.send( { path: `/img/${BASE_PATH}/${request.file.originalname}` } ) : response.send( { error: 'There was a problem uploading your image!' } );
 });
 
 /**
