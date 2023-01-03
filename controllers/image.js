@@ -19,6 +19,11 @@ const MULTER = require('multer');
 const GhostAccount = require('../models/ghost-account.js');
 
 /**
+ * Imports the schema for ghost urls.
+ */
+const GhostURL = require('../models/ghost-url.js');
+
+/**
  * Imports the express rate limit module.
  */
 const ERL = require('express-rate-limit');
@@ -67,12 +72,27 @@ const IMAGE_UPLOAD = MULTER({
 });
 
 /**
+ * Writes a shortened URL reference id to the database.
+ * 
+ * @param {*} image 
+ * @returns 
+ */
+const writeImageURL = async (image) => {
+
+    const result = await GhostURL.create(new GhostURL( { image: { originalURL: image.originalname } } ));
+
+    return result;
+}
+
+/**
  * POST route for handling image uploading logic...
  */
-IMAGE_ROUTER.post('/upload', [LIMITER, IMAGE_UPLOAD.single('image')], (request, response) => {
+IMAGE_ROUTER.post('/upload', [LIMITER, IMAGE_UPLOAD.single('image')], async (request, response) => {
     const BASE_PATH = request.session.isLoggedIn ? request.session.account.uid : 'anonymous';
 
-    return request.file ? response.send( { path: `/img/${BASE_PATH}/${request.file.originalname}` } ) : response.send( { error: 'There was a problem uploading your image!' } );
+    const data = await writeImageURL(request.file);
+
+    return request.file ? response.send( { path: `/img/${BASE_PATH}/${request.file.originalname}`, url: data } ) : response.send( { error: 'There was a problem uploading your image!' } );
 });
 
 /**
