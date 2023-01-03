@@ -384,9 +384,34 @@ div.upload-box {
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
     gap: 10px;
     grid-template-columns: 1fr;
     grid-template-rows: 4fr 1fr;
+}
+
+div.center-align-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+div#upload-drop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    border: 3px dashed;
+    border-radius: 20px;
+}
+
+img#upload-img {
+    width: 100%;
+    max-width: 150px;
 }
 
 /* Profile */
@@ -610,6 +635,10 @@ div.copied > p {
 
 @media (min-width: 460px) {
 
+    div#upload-drop {
+        max-width: 700px;
+    }
+
     h1.logo {
         margin: 0;
         font-size: 4rem;
@@ -653,5 +682,9 @@ div.copied > p {
 
     div.api-container {
         flex-direction: column;
+    }
+
+    img#upload-img {
+        max-width: 300px;
     }
 }

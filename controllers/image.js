@@ -44,7 +44,7 @@ const STORAGE_ENGINE = MULTER.diskStorage({
 
     // Will store uploaded images at the given path, or create one if a user is logged in..
     destination: (request, file, cb) => {
-        const DIR = './public/storage/images/' + (request.session.isLoggedIn ? request.session.account.uid : '');
+        const DIR = './public/storage/images/' + (request.session.isLoggedIn ? request.session.account.uid : 'default/');
 
         if (FILE_SYSTEM.existsSync(DIR)) return cb(null, DIR);
 

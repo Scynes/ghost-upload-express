@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <script>
+
+        const onDrag = (event) => {
+            event.preventDefault();
+
+            console.log('hello');
+        }
+
+        const onDrop = (event) => {
+            event.preventDefault();
+
+            if (!event.dataTransfer.items) return;
+                
+            const file = event.dataTransfer.items[0];
+
+            if (!file.type.includes('image')) return;
+
+            upload(file.getAsFile());
+        }
+
+        const upload = (image) => {
+
+            $.ajax({
+                type: 'POST',
+                url: './upload',
+                data: image,
+                contentType: false,
+                processData: false,
+                cache: false,
+                success: (response) => {
+                    console.log(response);
+                }
+            })
+        }
+
+    </script>
+
     <%- include('partials/head') %> 
 
     <body>
@@ -9,10 +46,12 @@
 
         <div id="upload-wrapper">
             <div class="upload-box">
-                <div>
-                    <h1>test grid one</h1>
+                <div class="center-align-div">
+                    <div id="upload-drop" ondrop="onDrop(event)" ondragover="onDrag(event)">
+                        <img id="upload-img" src="/images/upload.svg" alt="">
+                    </div>
                 </div>
-                <div>
+                <div class="center-align-div">
                     <h1>test grid two</h1>
                 </div>
             </div>
