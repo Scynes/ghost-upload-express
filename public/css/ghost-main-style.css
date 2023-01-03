@@ -369,6 +369,26 @@ fieldset#login > p, fieldset#signup > p {
     font-style: italic;
 }
 
+/* Upload */
+div#upload-wrapper {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+}
+
+div.upload-box {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 1fr;
+}
+
 /* Profile */
 div > h4 {
     position: fixed;
