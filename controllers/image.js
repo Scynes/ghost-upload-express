@@ -92,9 +92,9 @@ IMAGE_ROUTER.post('/avatar', [LIMITER, IMAGE_UPLOAD.single('avatar')], (request,
 /**
  * The image index router.
  */
-IMAGE_ROUTER.get('/', (request, response) => {
+IMAGE_ROUTER.get('/upload', (request, response) => {
 
-    response.render('index');
+    response.render('upload');
 })
 
 /**

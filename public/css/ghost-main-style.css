@@ -275,6 +275,7 @@ div.join-or-login > h2, div.logged-in-wrapper > h2 {
 }
 
 div.logged-in-wrapper > h2 {
+    color: var(--ghost-white);
     font-family: var(--phantom-font-flat);
 }
 
