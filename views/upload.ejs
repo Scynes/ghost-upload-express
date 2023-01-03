@@ -22,11 +22,14 @@
         }
 
         const upload = (image) => {
+            const IMAGE_DATA = new FormData();
+
+            IMAGE_DATA.append('image', image);
 
             $.ajax({
                 type: 'POST',
                 url: './upload',
-                data: image,
+                data: IMAGE_DATA,
                 contentType: false,
                 processData: false,
                 cache: false,
