@@ -22,7 +22,11 @@ UPLOADED_ROUTER.get('/:id', (request, response) => {
 
         if (!imageURL) return response.send('No image was located..')
 
-        return response.render('image', { imagePath: `/img/${imageURL.image.originalURL}` } );
+        return response.render('image', { 
+            imagePath: `/img/${imageURL.image.originalURL}`,
+            ogURL: request.baseUrl,
+            ogImage: `${request.baseUrl}/img/${imageURL.image.originalURL}`
+        });
     });
 });
 

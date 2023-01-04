@@ -91,6 +91,14 @@ const authenticated = (request, response, next) => {
     return next();
 }
 
+const openGraph = (request, response, next) => {
+    
+    response.locals.ogURL = 'http://localhost:3000'
+    response.locals.ogImage = '';
+
+    return next();
+}
+
 /**
  * Binds the application view engines.
  */
@@ -152,6 +160,8 @@ const bindMiddleware = () => {
     );
     // Sets the authentication global var middleware.
     WEB_SERVER.use(authenticated);
+    // Sets the open graph middleware.
+    WEB_SERVER.use(openGraph);
 
     console.log(`${APP_NAME} - successfully bound the middleware...`);
 }
