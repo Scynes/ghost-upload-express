@@ -77,9 +77,9 @@ const IMAGE_UPLOAD = MULTER({
  * @param {*} image 
  * @returns 
  */
-const writeImageURL = async (image) => {
+const writeImageURL = async (image, path) => {
 
-    const result = await GhostURL.create(new GhostURL( { image: { originalURL: image.originalname } } ));
+    const result = await GhostURL.create(new GhostURL( { image: { originalURL: `${path}/${image.originalname}` } } ));
 
     return result;
 }
@@ -90,7 +90,7 @@ const writeImageURL = async (image) => {
 IMAGE_ROUTER.post('/upload', [LIMITER, IMAGE_UPLOAD.single('image')], async (request, response) => {
     const BASE_PATH = request.session.isLoggedIn ? request.session.account.uid : 'anonymous';
 
-    const data = await writeImageURL(request.file);
+    const data = await writeImageURL(request.file, BASE_PATH);
 
     return request.file ? response.send( { path: `/img/${BASE_PATH}/${request.file.originalname}`, url: data } ) : response.send( { error: 'There was a problem uploading your image!' } );
 });
