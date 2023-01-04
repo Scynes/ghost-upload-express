@@ -24,8 +24,8 @@ UPLOADED_ROUTER.get('/:id', (request, response) => {
 
         return response.render('image', { 
             imagePath: `/img/${imageURL.image.originalURL}`,
-            ogURL: request.baseUrl,
-            ogImage: `${request.baseUrl}/img/${imageURL.image.originalURL}`
+            ogURL: request.get('host'),
+            ogImage: `${request.get('host')}/img/${imageURL.image.originalURL}`
         });
     });
 });
