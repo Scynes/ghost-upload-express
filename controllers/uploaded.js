@@ -18,7 +18,12 @@ const UPLOADED_ROUTER = EXPRESS.Router();
  */
 UPLOADED_ROUTER.get('/:id', (request, response) => {
 
-    response.send(request.params.id)
+    GhostURL.findById(request.params.id, (error, imageURL) => {
+
+        if (!imageURL) return response.send('No image was located..')
+
+        return response.render('image', { imagePath: imageURL.image.originalURL } );
+    });
 });
 
 /**
