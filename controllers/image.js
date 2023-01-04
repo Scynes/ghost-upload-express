@@ -24,6 +24,11 @@ const GhostAccount = require('../models/ghost-account.js');
 const GhostURL = require('../models/ghost-url.js');
 
 /**
+ * Shortid module import.
+ */
+const SHORT_ID = require('shortid');
+
+/**
  * Imports the express rate limit module.
  */
 const ERL = require('express-rate-limit');
@@ -79,7 +84,7 @@ const IMAGE_UPLOAD = MULTER({
  */
 const writeImageURL = async (image, path) => {
 
-    const result = await GhostURL.create(new GhostURL( { image: { originalURL: `${path}/${image.originalname}` } } ));
+    const result = await GhostURL.create(new GhostURL( { _id: SHORT_ID.generate(), image: { originalURL: `${path}/${image.originalname}` } } ));
 
     return result;
 }

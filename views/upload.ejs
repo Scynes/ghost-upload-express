@@ -21,6 +21,21 @@
             upload(file.getAsFile());
         }
 
+        const copyAPIKey = () => {
+
+            const LINK = $('#link-gen > input').val();
+
+            $('#link-gen > input').select();
+
+            setTimeout(() => {
+                $('#link-gen > input').val(LINK)
+            }, 3000);
+
+            $('#link-gen > input').val('Copied Link!')
+
+            return document.execCommand('copy');
+        };
+
         const upload = (image) => {
             const IMAGE_DATA = new FormData();
 
@@ -53,6 +68,9 @@
                 <div class="center-align-div">
                     <div id="upload-drop" ondrop="onDrop(event)" ondragover="onDrag(event)">
                         <img id="upload-img" src="/images/upload.svg" alt="">
+                        <div id="link-gen">
+                            <input type="text" onclick="copyAPIKey()" value="Drag / Drop An Image!" readonly>
+                        </div>
                     </div>
                 </div>
                 <div class="center-align-div">

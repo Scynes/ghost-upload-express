@@ -411,7 +411,27 @@ div#upload-drop {
 
 img#upload-img {
     width: 100%;
-    max-width: 150px;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+div#link-gen {
+    margin-top: 40px;
+    width: 70%;
+}
+
+div#link-gen > input[type="text"] {
+    border-radius: 30px;
+    height: 50px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    padding: 0 30px;
+    text-overflow: ellipsis;
+    background-color: var(--ectoplasm-green);
+    color: var(--phantom-purple);
+    user-select: none;
+    cursor: pointer;
 }
 
 /* Image Page */

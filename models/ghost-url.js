@@ -4,11 +4,6 @@
 const MONGOOSE = require('mongoose');
 
 /**
- * Shortid module import.
- */
-const SHORT_ID = require('shortid');
-
-/**
  * Holds the Schema object reference from the mongoose module.
  */
 const Schema = MONGOOSE.Schema;
@@ -19,9 +14,9 @@ const Schema = MONGOOSE.Schema;
 const GHOST_URL_SCHEMA = new Schema({
 
     _id: {
-        type: String,
-        default: SHORT_ID.generate()
+        type: String
     },
+
     image: {
         originalURL: {
             type: String,
