@@ -97,7 +97,7 @@ IMAGE_ROUTER.post('/upload', [LIMITER, IMAGE_UPLOAD.single('image')], async (req
 
     const data = await writeImageURL(request.file, BASE_PATH);
 
-    return request.file ? response.send( { path: `/img/${BASE_PATH}/${request.file.originalname}`, url: data } ) : response.send( { error: 'There was a problem uploading your image!' } );
+    return request.file ? response.send( { path: `/img/${BASE_PATH}/${request.file.originalname}`, urlID: data._id } ) : response.send( { error: 'There was a problem uploading your image!' } );
 });
 
 /**

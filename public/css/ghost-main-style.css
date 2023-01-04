@@ -399,8 +399,10 @@ div.center-align-div {
 }
 
 div#upload-drop {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -409,15 +411,20 @@ div#upload-drop {
     border-radius: 20px;
 }
 
+div#upload-drop > svg {
+    position: absolute;
+    z-index: -1;
+    fill: var(--phantom-purple);
+    background-color: var(--deep-phantom-purple);
+}
+
 img#upload-img {
-    width: 100%;
     max-width: 250px;
     max-height: 250px;
 }
 
 div#link-gen {
-    margin-top: 40px;
-    width: 70%;
+    width: 100%;
 }
 
 div#link-gen > input[type="text"] {
@@ -432,6 +439,12 @@ div#link-gen > input[type="text"] {
     color: var(--phantom-purple);
     user-select: none;
     cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+div#link-gen > input[type="text"]:hover {
+    background-color: var(--deep-phantom-purple);
+    color: var(--ectoplasm-green);
 }
 
 /* Image Page */
@@ -663,6 +676,15 @@ div.copied > p {
 }
 
 @media (min-width: 460px) {
+
+    div#upload-drop > svg {
+        fill: var(--phantom-purple);
+        background-color: var(--ectoplasm-green);
+    }
+
+    div#link-gen {
+        max-width: 450px;
+    }
 
     div#upload-drop {
         max-width: 700px;
