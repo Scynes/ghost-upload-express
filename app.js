@@ -29,14 +29,14 @@ const ENV = require('dotenv').config();
 const ACCOUNT_ROUTER = require('./controllers/account.js');
 
 /**
- * Imports the game router module.
- */
-const GAME_ROUTER = require('./controllers/game.js');
-
-/**
  * Imports the image router module.
  */
 const IMAGE_ROUTER = require('./controllers/image.js')
+
+/**
+ * Imports the uploaded router module.
+ */
+const UPLOADED_ROUTER = require('./controllers/uploaded.js')
 
 /**
  * Imports the schema for ghost accounts.
@@ -111,8 +111,8 @@ const bindRouters = () => {
     WEB_SERVER.use('/account', ACCOUNT_ROUTER);
     // Sets the image router path.
     WEB_SERVER.use('/image', IMAGE_ROUTER);
-    // Sets the game router path.
-    WEB_SERVER.use('/game', GAME_ROUTER);
+    // Sets the image render router path.
+    WEB_SERVER.use('/u', UPLOADED_ROUTER);
 
     console.log(`${APP_NAME} - successfully bound the routers...`);
 }
