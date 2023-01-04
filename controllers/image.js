@@ -39,6 +39,11 @@ const ERL = require('express-rate-limit');
 const FILE_SYSTEM = require('fs');
 
 /**
+ * Defines the characters for use in shortid generation.
+ */
+SHORT_ID.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@')
+
+/**
  * Defines the ERL middleware configuration options.
  */
 const LIMITER = ERL({

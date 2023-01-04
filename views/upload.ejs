@@ -21,17 +21,22 @@
             upload(file.getAsFile());
         }
 
-        const copyAPIKey = () => {
+        const copyLink = () => {
 
+            if (!$('#link-gen > input').hasClass('active') || $('#link-gen > input').hasClass('copying')) return;
+            
+            !$('#link-gen > input').toggleClass('copying');
             const LINK = $('#link-gen > input').val();
 
             $('#link-gen > input').select();
             document.execCommand('copy');
 
             setTimeout(() => {
-                $('#link-gen > input').val(LINK)
+                $('#link-gen > input').val(LINK);
+                !$('#link-gen > input').toggleClass('copying')
             }, 3000);
 
+            $('div#upload-drop').css('color', 'var(--deep-phantom-purple)');
             $('#link-gen > input').val('Copied Link!')
         };
 
@@ -48,9 +53,12 @@
                 processData: false,
                 cache: false,
                 success: (response) => {
-                    console.log(response);
-                    $('img').attr('src', response.path);
+                    $('div#upload-drop').css('color', 'var(--ectoplasm-green)');
+                    //$('img').attr('src', response.path);
                     $('#link-gen > input').val(`http://localhost:3000/u/${response.urlID}`)
+                    if (!$('#link-gen > input').hasClass('active')) {
+                        $('#link-gen > input').addClass('active')
+                    }
                 }
             })
         }
@@ -78,14 +86,14 @@
                                     M410,259.5Q360,279,341.5,289.5Q323,300,318,320Q313,340,293,340.5Q273,341,256.5,403.5Q240,466,221,412Q202,358,186.5,346.5Q171,335,159,321.5Q147,308,116,299Q85,290,56.5,265Q28,240,61.5,216.5Q95,193,79,152Q63,111,91,92Q119,73,153,75.5Q187,78,213.5,108.5Q240,139,256,140Q272,141,314,110.5Q356,80,369,108.5Q382,137,411,156Q440,175,450,207.5Q460,240,410,259.5Z;"/>
                             </path>
                         </svg>
-                        <div class="center-align-div">
+                        <div class="center-align-div" style="flex-direction: column;">
                             <img id="upload-img" src="/images/upload.svg" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="center-align-div" style="align-items:flex-start;">
                     <div id="link-gen">
-                        <input type="text" onclick="copyAPIKey()" value="Drag / Drop An Image!" readonly>
+                        <input type="text" onclick="copyLink()" value="Drag / Drop An Image!" readonly>
                     </div>
                 </div>
             </div>
