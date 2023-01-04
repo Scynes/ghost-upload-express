@@ -24,7 +24,7 @@
         const copyLink = () => {
 
             if (!$('#link-gen > input').hasClass('active') || $('#link-gen > input').hasClass('copying')) return;
-            
+
             !$('#link-gen > input').toggleClass('copying');
             const LINK = $('#link-gen > input').val();
 
@@ -55,7 +55,7 @@
                 success: (response) => {
                     $('div#upload-drop').css('color', 'var(--ectoplasm-green)');
                     //$('img').attr('src', response.path);
-                    $('#link-gen > input').val(`http://localhost:3000/u/${response.urlID}`)
+                    $('#link-gen > input').val(`http://${location.hostname}/u/${response.urlID}`)
                     if (!$('#link-gen > input').hasClass('active')) {
                         $('#link-gen > input').addClass('active')
                     }
