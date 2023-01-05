@@ -39,6 +39,11 @@ const IMAGE_ROUTER = require('./controllers/image.js')
 const UPLOADED_ROUTER = require('./controllers/uploaded.js')
 
 /**
+ * Imports the root router module.
+ */
+const ROUTE_ROUTER = require('./controllers/root.js');
+
+/**
  * Imports the schema for ghost accounts.
  */
 const GhostAccount = require('./models/ghost-account.js');
@@ -205,34 +210,6 @@ const buildWebServer = () => {
     bindMongoDatabase();
 }
 
-// Invoke the build method to start the application..
-buildWebServer();
-
-/**
- * Populates the database with mock data.
- */
-WEB_SERVER.get('/seed', (request, response) => {
-    
-    GhostAccount.deleteMany( { }, error => {
-
-        GhostAccount.create(SEED_DATA, (error, data) => {
-
-            response.send(data);
-        })
-    });
-})
-
-/**
- * Root redirection to landing page.
- */
-WEB_SERVER.get('/', async (request, response) => {
-
-    response.render('error', {
-        errorCode: 503,
-        errorMessage: 'Under Construction! <(o.O<)',
-    });
-});
-
 /**
  * This route will display error handling pages based on the response code...
  */
@@ -242,4 +219,7 @@ WEB_SERVER.get('*', (request, response) => {
         errorCode: response.statusCode,
         errorMessage: 'Just a default error response...:p',
     });
-})
+});
+
+// Invoke the build method to start the application..
+buildWebServer();
