@@ -56,12 +56,16 @@
                     $('div#upload-drop').css('color', 'var(--ectoplasm-green)');
                     //$('img').attr('src', response.path);
                     $('#link-gen > input').val(`http://${location.hostname}/u/${response.urlID}`)
+
+                    $('#local-uploads').append(`<span><a href="http://localhost:3000/u/${response.urlID}">Some Link</a></span>`)
                     if (!$('#link-gen > input').hasClass('active')) {
                         $('#link-gen > input').addClass('active')
                     }
                 }
             })
         }
+
+        $(window)
 
     </script>
 
@@ -93,7 +97,10 @@
                             </div>
                         </div>
                     </div>
-                    <div id="local-uploads"></div>
+                    <div id="local-uploads">
+                        <h3>Upload History</h3>
+                        <hr>
+                    </div>
                 </div>
                 <div class="center-align-div" style="align-items:flex-start;">
                     <div id="link-gen">
