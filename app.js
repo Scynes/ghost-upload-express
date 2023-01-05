@@ -95,7 +95,7 @@ const openGraph = (request, response, next) => {
     
     response.locals.ogURL = 'http://localhost:3000';
     response.locals.ogImage = '/images/upload.svg';
-    response.locals.ogDescription = 'Ghostly anonymous, private and fast image upload and sharing.';
+    response.locals.ogDescription = 'Fast and annonymous image sharing.';
 
     return next();
 }
