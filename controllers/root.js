@@ -9,6 +9,14 @@ const EXPRESS = require('express');
 const ROOT_ROUTER = EXPRESS.Router();
 
 /**
+ * Renders the contact page.
+ */
+ROOT_ROUTER.get('/contact', (request, response) => {
+
+    response.render('contact')
+});
+
+/**
  * Root redirection to landing page.
  */
 ROOT_ROUTER.get('/', (request, response) => {
@@ -29,6 +37,17 @@ ROOT_ROUTER.get('/seed', (request, response) => {
         })
     });
 });
+
+/**
+ * This route will display error handling pages based on the response code...
+ */
+ROOT_ROUTER.get('*', (request, response) => {
+
+    response.render('error', {
+        errorCode: response.statusCode,
+        errorMessage: 'Just a default error response...:p',
+    });
+})
 
 /**
  * Export the router for use.

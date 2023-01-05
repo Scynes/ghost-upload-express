@@ -29,19 +29,24 @@ const ENV = require('dotenv').config();
 const ACCOUNT_ROUTER = require('./controllers/account.js');
 
 /**
- * Imports the image router module.
+ * Imports the contact router module.
  */
-const IMAGE_ROUTER = require('./controllers/image.js')
+const CONTACT_ROUTER = require('./controllers/contact.js');
 
 /**
- * Imports the uploaded router module.
+ * Imports the image router module.
  */
-const UPLOADED_ROUTER = require('./controllers/uploaded.js')
+const IMAGE_ROUTER = require('./controllers/image.js');
 
 /**
  * Imports the root router module.
  */
-const ROUTE_ROUTER = require('./controllers/root.js');
+const ROOT_ROUTER = require('./controllers/root.js');
+
+/**
+ * Imports the uploaded router module.
+ */
+const UPLOADED_ROUTER = require('./controllers/uploaded.js');
 
 /**
  * Imports the schema for ghost accounts.
@@ -123,10 +128,14 @@ const bindRouters = () => {
 
     // Sets the account router path.
     WEB_SERVER.use('/account', ACCOUNT_ROUTER);
+    // Sets the contact router path.
+    WEB_SERVER.use('/contact', CONTACT_ROUTER);
     // Sets the image router path.
     WEB_SERVER.use('/image', IMAGE_ROUTER);
     // Sets the image render router path.
     WEB_SERVER.use('/u', UPLOADED_ROUTER);
+    // Sets the root route path.
+    WEB_SERVER.use('/', ROOT_ROUTER);
 
     console.log(`${APP_NAME} - successfully bound the routers...`);
 }
@@ -209,17 +218,6 @@ const buildWebServer = () => {
     bindRouters();
     bindMongoDatabase();
 }
-
-/**
- * This route will display error handling pages based on the response code...
- */
-WEB_SERVER.get('*', (request, response) => {
-
-    response.render('error', {
-        errorCode: response.statusCode,
-        errorMessage: 'Just a default error response...:p',
-    });
-});
 
 // Invoke the build method to start the application..
 buildWebServer();
