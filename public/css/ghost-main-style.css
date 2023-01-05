@@ -520,6 +520,58 @@ div#link-gen > input[type="text"].active:hover {
     color: var(--ectoplasm-green);
 }
 
+/* Contact Page */
+div#contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    width: 100%;
+}
+
+div#contact-wrapper > div {
+    height: 550px;
+    width: 450px;
+    background-color: var(--deep-phantom-purple);
+    border-radius: 15px;
+    padding: 30px;
+}
+
+div#contact-wrapper > div > h1, div#contact-wrapper > div > p {
+    text-align: center;
+    font-family: var(--phantom-font-flat);
+    color: var(--ectoplasm-green);
+}
+
+div#contact-wrapper > div > form > input, textarea {
+    height: 35px;
+    width: 100%;
+    margin: 5px auto;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--phantom-purple);
+    color: var(--ectoplasm-green-bright);
+    text-align: center;
+    outline: none;
+}
+
+#send-message > input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: var(--ectoplasm-green);
+    color: var(--deep-phantom-purple);
+    transition: 0.5s ease-in-out;
+}
+
+div#contact-wrapper > div > form > input:focus, textarea:focus {
+    background-color: var(--phantom-purple-light);
+}
+
+textarea {
+    padding: 10px;
+    height: 100px;
+    resize: none;
+}
+
 /* Image Page */
 div#display-wrapper {
     display: flex;

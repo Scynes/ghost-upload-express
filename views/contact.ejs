@@ -7,7 +7,23 @@
 
         <%- include('partials/header') %>
 
-        body info
+        <div id="contact-wrapper">
+            <div>
+                <h1>Contact Ghost</h1>
+                <p style="color: var(--ghost-white);">Complete the form below to send us a message!</p>
+                <form id="send-message" action="/contact" method="POST">
+                    <label for="full-name">Full Name</label>
+                    <input id="full-name" type="text" name="fullName" placeholder="Casper Ghost">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" name="email" placeholder="you@ghost.com">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Your Subject">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                    <input type="submit" value="Send Message">
+                </form>
+            </div>
+        </div>
         
         <%- include('partials/footer') %> 
         

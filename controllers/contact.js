@@ -1,8 +1,12 @@
 /**
  * Express server module import.
  */
-const { request, response } = require('express');
 const EXPRESS = require('express');
+
+/**
+ * Import the ghost message schema.
+ */
+const GhostMessage = require('../models/ghost-message.js');
 
 /**
  * The express router reference for root.
@@ -17,9 +21,17 @@ CONTACT_ROUTER.get('/', (request, response) => {
     response.render('contact')
 });
 
+/**
+ * Post route for handling incoming message requests
+ */
 CONTACT_ROUTER.post('/', (request, response) => {
 
-    
+    GhostMessage.create(request.body, (error, message) => {
+
+        if (error) return response.send(error);
+
+        return response.send(message);
+    });
 })
 
 /**
