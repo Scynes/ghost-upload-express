@@ -71,8 +71,6 @@ Ghost Upload has the goal of replacing existing solutions that offer screen capt
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 [![My Skills](https://skillicons.dev/icons?i=html,css,javascript,nodejs,express,mongodb&theme=dark)](https://skillicons.dev)
 
 Node Packages:
