@@ -121,12 +121,12 @@
                     //$('img').attr('src', response.path);
                     $('#link-gen > input').val(`http://${location.hostname}/u/${response.urlID}`)
 
-                    $('#links > div').append(`<span><a href="http://localhost:3000/u/${response.urlID}">${image.name}</a></span>`)
+                    $('#links > div').append(`<span><a href="http://${location.hostname}/u/${response.urlID}">${image.name}</a></span>`)
                     if (!$('#link-gen > input').hasClass('active')) {
                         $('#link-gen > input').addClass('active')
                     }
 
-                    LOCAL_LINK_STORAGE.push(`<span><a href="http://localhost:3000/u/${response.urlID}">${image.name}</a></span>`);
+                    LOCAL_LINK_STORAGE.push(`<span><a href="http://${location.hostname}/u/${response.urlID}">${image.name}</a></span>`);
                     localStorage.setItem('ghostUploadLinks', JSON.stringify(LOCAL_LINK_STORAGE));
                 }
             })
