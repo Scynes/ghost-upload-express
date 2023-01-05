@@ -1,7 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <script>
+    <%- include('partials/head') %> 
+
+    <body>
+
+        <%- include('partials/header') %> 
+        
+        <div id="upload-wrapper">
+            <div class="upload-box">
+                <div id="upload-info">
+                    <div class="sides">
+
+                    </div>
+                    <div class="center-align-div">
+                        <div id="upload-drop" ondrop="onDrop(event)" ondragover="onDrag(event)">
+                            <svg class="svg-blob" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path>
+                                    <animate attributeName="d" dur="25s" repeatCount="indefinite"
+                                        values="
+                                        M410,259.5Q360,279,341.5,289.5Q323,300,318,320Q313,340,293,340.5Q273,341,256.5,403.5Q240,466,221,412Q202,358,186.5,346.5Q171,335,159,321.5Q147,308,116,299Q85,290,56.5,265Q28,240,61.5,216.5Q95,193,79,152Q63,111,91,92Q119,73,153,75.5Q187,78,213.5,108.5Q240,139,256,140Q272,141,314,110.5Q356,80,369,108.5Q382,137,411,156Q440,175,450,207.5Q460,240,410,259.5Z;
+                                        M433,264.5Q390,289,374.5,308Q359,327,356,361.5Q353,396,316.5,380Q280,364,260,356.5Q240,349,211.5,382.5Q183,416,176.5,376.5Q170,337,134,340Q98,343,114.5,309Q131,275,108,257.5Q85,240,91.5,217Q98,194,86,156.5Q74,119,126,137Q178,155,181,112Q184,69,212,99.5Q240,130,274.5,78.5Q309,27,310.5,84Q312,141,342.5,142.5Q373,144,418,155.5Q463,167,469.5,203.5Q476,240,433,264.5Z;
+                                        M430.5,269.5Q422,299,413.5,329.5Q405,360,376.5,374.5Q348,389,323,403.5Q298,418,269,421Q240,424,208.5,429.5Q177,435,141.5,429.5Q106,424,127,365.5Q148,307,143,290Q138,273,118,256.5Q98,240,91,214.5Q84,189,79,154Q74,119,111,116Q148,113,162.5,79.5Q177,46,208.5,59Q240,72,260,94.5Q280,117,314,104Q348,91,357.5,119.5Q367,148,366.5,173.5Q366,199,402.5,219.5Q439,240,430.5,269.5Z;
+                                        M368,260Q365,280,383.5,319Q402,358,352,342Q302,326,300.5,374Q299,422,269.5,404.5Q240,387,216.5,386Q193,385,171.5,374.5Q150,364,148.5,336Q147,308,140,291.5Q133,275,68.5,257.5Q4,240,35,211.5Q66,183,98,171.5Q130,160,124,116.5Q118,73,156.5,87.5Q195,102,217.5,74Q240,46,276,32.5Q312,19,314,77Q316,135,364,125Q412,115,377.5,161Q343,207,357,223.5Q371,240,368,260Z;
+                                        M410,259.5Q360,279,341.5,289.5Q323,300,318,320Q313,340,293,340.5Q273,341,256.5,403.5Q240,466,221,412Q202,358,186.5,346.5Q171,335,159,321.5Q147,308,116,299Q85,290,56.5,265Q28,240,61.5,216.5Q95,193,79,152Q63,111,91,92Q119,73,153,75.5Q187,78,213.5,108.5Q240,139,256,140Q272,141,314,110.5Q356,80,369,108.5Q382,137,411,156Q440,175,450,207.5Q460,240,410,259.5Z;"/>
+                                </path>
+                            </svg>
+                            <div class="center-align-div" style="flex-direction: column;">
+                                <img id="upload-img" src="/images/upload.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="local-uploads">
+                        <div class="align-center-div" style="width: 100%;">
+                            <h3>Upload History</h3>
+                            <hr>
+                        </div>
+                        <div id="links">
+                            <div>
+
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="center-align-div" style="align-items:flex-start;">
+                    <div id="link-gen">
+                        <input type="text" onclick="copyLink()" value="Drag / Drop An Image!" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+        
+    </body>
+    <script defer>
+
+        const LOCAL_LINK_STORAGE = JSON.parse(localStorage.getItem('ghostUploadLinks')) || [];
+
+        const populateLinks = () => {
+
+            LOCAL_LINK_STORAGE.forEach(element => {
+                console.log('wtf')
+
+                $('#links > div').append(element);
+            });
+        }
 
         const onDrag = (event) => {
             event.preventDefault();
@@ -57,60 +121,18 @@
                     //$('img').attr('src', response.path);
                     $('#link-gen > input').val(`http://${location.hostname}/u/${response.urlID}`)
 
-                    $('#local-uploads').append(`<span><a href="http://localhost:3000/u/${response.urlID}">Some Link</a></span>`)
+                    $('#links > div').append(`<span><a href="http://localhost:3000/u/${response.urlID}">${image.name}</a></span>`)
                     if (!$('#link-gen > input').hasClass('active')) {
                         $('#link-gen > input').addClass('active')
                     }
+
+                    LOCAL_LINK_STORAGE.push(`<span><a href="http://localhost:3000/u/${response.urlID}">${image.name}</a></span>`);
+                    localStorage.setItem('ghostUploadLinks', JSON.stringify(LOCAL_LINK_STORAGE));
                 }
             })
         }
 
-        $(window)
+        populateLinks();
 
     </script>
-
-    <%- include('partials/head') %> 
-
-    <body>
-
-        <%- include('partials/header') %> 
-        
-        <div id="upload-wrapper">
-            <div class="upload-box">
-                <div id="upload-info">
-                    <div class="sides"></div>
-                    <div class="center-align-div">
-                        <div id="upload-drop" ondrop="onDrop(event)" ondragover="onDrag(event)">
-                            <svg class="svg-blob" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <path>
-                                    <animate attributeName="d" dur="25s" repeatCount="indefinite"
-                                        values="
-                                        M410,259.5Q360,279,341.5,289.5Q323,300,318,320Q313,340,293,340.5Q273,341,256.5,403.5Q240,466,221,412Q202,358,186.5,346.5Q171,335,159,321.5Q147,308,116,299Q85,290,56.5,265Q28,240,61.5,216.5Q95,193,79,152Q63,111,91,92Q119,73,153,75.5Q187,78,213.5,108.5Q240,139,256,140Q272,141,314,110.5Q356,80,369,108.5Q382,137,411,156Q440,175,450,207.5Q460,240,410,259.5Z;
-                                        M433,264.5Q390,289,374.5,308Q359,327,356,361.5Q353,396,316.5,380Q280,364,260,356.5Q240,349,211.5,382.5Q183,416,176.5,376.5Q170,337,134,340Q98,343,114.5,309Q131,275,108,257.5Q85,240,91.5,217Q98,194,86,156.5Q74,119,126,137Q178,155,181,112Q184,69,212,99.5Q240,130,274.5,78.5Q309,27,310.5,84Q312,141,342.5,142.5Q373,144,418,155.5Q463,167,469.5,203.5Q476,240,433,264.5Z;
-                                        M430.5,269.5Q422,299,413.5,329.5Q405,360,376.5,374.5Q348,389,323,403.5Q298,418,269,421Q240,424,208.5,429.5Q177,435,141.5,429.5Q106,424,127,365.5Q148,307,143,290Q138,273,118,256.5Q98,240,91,214.5Q84,189,79,154Q74,119,111,116Q148,113,162.5,79.5Q177,46,208.5,59Q240,72,260,94.5Q280,117,314,104Q348,91,357.5,119.5Q367,148,366.5,173.5Q366,199,402.5,219.5Q439,240,430.5,269.5Z;
-                                        M368,260Q365,280,383.5,319Q402,358,352,342Q302,326,300.5,374Q299,422,269.5,404.5Q240,387,216.5,386Q193,385,171.5,374.5Q150,364,148.5,336Q147,308,140,291.5Q133,275,68.5,257.5Q4,240,35,211.5Q66,183,98,171.5Q130,160,124,116.5Q118,73,156.5,87.5Q195,102,217.5,74Q240,46,276,32.5Q312,19,314,77Q316,135,364,125Q412,115,377.5,161Q343,207,357,223.5Q371,240,368,260Z;
-                                        M410,259.5Q360,279,341.5,289.5Q323,300,318,320Q313,340,293,340.5Q273,341,256.5,403.5Q240,466,221,412Q202,358,186.5,346.5Q171,335,159,321.5Q147,308,116,299Q85,290,56.5,265Q28,240,61.5,216.5Q95,193,79,152Q63,111,91,92Q119,73,153,75.5Q187,78,213.5,108.5Q240,139,256,140Q272,141,314,110.5Q356,80,369,108.5Q382,137,411,156Q440,175,450,207.5Q460,240,410,259.5Z;"/>
-                                </path>
-                            </svg>
-                            <div class="center-align-div" style="flex-direction: column;">
-                                <img id="upload-img" src="/images/upload.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div id="local-uploads">
-                        <h3>Upload History</h3>
-                        <hr>
-                    </div>
-                </div>
-                <div class="center-align-div" style="align-items:flex-start;">
-                    <div id="link-gen">
-                        <input type="text" onclick="copyLink()" value="Drag / Drop An Image!" readonly>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <%- include('partials/footer') %>
-        
-    </body>
 </html>

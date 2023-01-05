@@ -443,28 +443,50 @@ img#upload-img {
 }
 
 div#local-uploads {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     height: 80%;
-    overflow: scroll;
+    overflow: hidden;
     border-radius: 20px;
     padding: 20px;
     background-color: var(--deep-phantom-purple);
 }
 
-div#local-uploads::-webkit-scrollbar {
+#links {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#links > div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+#links > div > span {
+    margin: 5px auto;
+}
+
+div#links > div::-webkit-scrollbar {
     display: none;
 }
 
-div#local-uploads > h3 {
+div#local-uploads > div > h3 {
     font-family: var(--phantom-font-flat);
     color: var(--ectoplasm-green-bright);
     margin: 0;
+    text-align: center;
 }
 
-div#local-uploads > hr {
+div#local-uploads > div > hr {
     margin-bottom: 30px;
     border: 0;
     height: 1px;
